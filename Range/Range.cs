@@ -1,24 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Range
 {
     class Range
     {
-        public double From
-        {
-            get;
-            set;
-        }
+        public double From { get; set; }
 
-        public double To
-        {
-            get;
-            set;
-        }
+        public double To { get; set; }
 
         public Range(double from, double to)
         {
@@ -40,52 +28,22 @@ namespace Range
 
         public Range GetIntersection(Range range)
         {
-            if (From >= range.To || range.From >= To)
+            if (Math.Max(From, range.From) < Math.Min(To, range.To))
             {
-                return null;
+                return new Range(Math.Max(From, range.From), Math.Min(To, range.To));
             }
 
-            if (From <= range.From && range.To <= To)
-            {
-                return new Range(range.From, range.To);
-            }
-
-            if (From > range.From && range.To > To)
-            {
-                return new Range(From, To);
-            }
-
-            if (From > range.From && To > range.To && From < range.To)
-            {
-                return new Range(From, range.To);
-            }
-
-            return new Range(range.From, To);
+            return null;
         }
 
         public Range[] GetUnion(Range range)
         {
-            if (From > range.To || range.From > To)
+            if (Math.Max(From, range.From) <= Math.Min(To, range.To))
             {
-                return new Range[] { new Range(From, To), new Range(range.From, range.To) };
+                return new Range[] { new Range(Math.Min(From, range.From), Math.Max(To, range.To)) };
             }
 
-            if (From <= range.From && range.To <= To)
-            {
-                return new Range[] { new Range(From, To) };
-            }
-
-            if (From > range.From && range.To > To)
-            {
-                return new Range[] { new Range(range.From, range.To) };
-            }
-
-            if (From > range.From && To > range.To && From <= range.To)
-            {
-                return new Range[] { new Range(range.From, To) };
-            }
-
-            return new Range[] { new Range(From, range.To) };
+            return new Range[] { new Range(From, To), new Range(range.From, range.To) };
         }
 
         public Range[] GetDifference(Range range)
