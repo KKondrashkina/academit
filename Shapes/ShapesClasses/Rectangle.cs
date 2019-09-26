@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Shapes
+namespace Shapes.ShapesClasses
 {
     public class Rectangle : IShape
     {

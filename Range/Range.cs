@@ -28,9 +28,12 @@ namespace Range
 
         public Range GetIntersection(Range range)
         {
-            if (Math.Max(From, range.From) < Math.Min(To, range.To))
+            double max = Math.Max(From, range.From);
+            double min = Math.Min(To, range.To);
+
+            if (max < min)
             {
-                return new Range(Math.Max(From, range.From), Math.Min(To, range.To));
+                return new Range(max, min);
             }
 
             return null;
@@ -38,9 +41,12 @@ namespace Range
 
         public Range[] GetUnion(Range range)
         {
-            if (Math.Max(From, range.From) <= Math.Min(To, range.To))
+            double max = Math.Max(From, range.From);
+            double min = Math.Min(To, range.To);
+
+            if (max <= min)
             {
-                return new Range[] { new Range(Math.Min(From, range.From), Math.Max(To, range.To)) };
+                return new Range[] { new Range(min, max) };
             }
 
             return new Range[] { new Range(From, To), new Range(range.From, range.To) };

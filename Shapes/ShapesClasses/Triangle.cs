@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Shapes
+namespace Shapes.ShapesClasses
 {
     public class Triangle : IShape
     {
@@ -21,14 +21,19 @@ namespace Shapes
             Y3 = y3;
         }
 
+        private double SegmentLength(double coordinate1, double coordinate2, double coordinate3)
+        {
+            return Math.Max(Math.Max(coordinate1, coordinate2), coordinate3) - Math.Min(Math.Min(coordinate1, coordinate2), coordinate3);
+        }
+
         public double GetWidth()
         {
-            return Math.Max(Math.Max(X1, X2), X3) - Math.Min(Math.Min(X1, X2), X3);
+            return SegmentLength(X1, X2, X3);
         }
 
         public double GetHeight()
         {
-            return Math.Max(Math.Max(Y1, Y2), Y3) - Math.Min(Math.Min(Y1, Y2), Y3);
+            return SegmentLength(Y1, Y2, Y3);
         }
 
         public double GetArea()
