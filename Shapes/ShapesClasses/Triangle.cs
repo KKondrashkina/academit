@@ -21,19 +21,19 @@ namespace Shapes.ShapesClasses
             Y3 = y3;
         }
 
-        private double SegmentLength(double coordinate1, double coordinate2, double coordinate3)
+        private static double GetSegmentLength(double coordinate1, double coordinate2, double coordinate3, double coordinate4)
         {
-            return Math.Max(Math.Max(coordinate1, coordinate2), coordinate3) - Math.Min(Math.Min(coordinate1, coordinate2), coordinate3);
+            return Math.Sqrt(Math.Pow(coordinate1 - coordinate2, 2) + Math.Pow(coordinate3 - coordinate4, 2));
         }
 
         public double GetWidth()
         {
-            return SegmentLength(X1, X2, X3);
+            return Math.Max(Math.Max(X1, X2), X3) - Math.Min(Math.Min(X1, X2), X3);
         }
 
         public double GetHeight()
         {
-            return SegmentLength(Y1, Y2, Y3);
+            return Math.Max(Math.Max(X1, X2), X3) - Math.Min(Math.Min(X1, X2), X3);
         }
 
         public double GetArea()
@@ -43,8 +43,7 @@ namespace Shapes.ShapesClasses
 
         public double GetPerimeter()
         {
-            return Math.Sqrt(Math.Pow(X2 - X1, 2) + Math.Pow(Y2 - Y1, 2)) + Math.Sqrt(Math.Pow(X3 - X2, 2) + Math.Pow(Y3 - Y2, 2)) +
-                Math.Sqrt(Math.Pow(X3 - X1, 2) + Math.Pow(Y3 - Y1, 2));
+            return GetSegmentLength(X2, X1, Y2, Y1) + GetSegmentLength(X3, X2, Y3, Y2) + GetSegmentLength(X3, X1, Y3, Y1);
         }
 
         public override string ToString()
