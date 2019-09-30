@@ -12,24 +12,24 @@ namespace Vectors
             Vector vector4 = new Vector(6, new double[] { 5.6, 7.7, 6.8 });
 
             Console.Write("Сумма векторов {0} и {1} = ", vector3, vector4);
-            vector3.GetSum(vector4);
+            vector3.AddVector(vector4);
             Console.WriteLine(vector3);
             Console.WriteLine();
 
             Console.Write("Разность векторов {0} и {1} = ", vector3, vector4);
-            vector4.GetDifference(vector3);
-            Console.WriteLine(vector4);
+            vector3.SubtractVector(vector4);
+            Console.WriteLine(vector3);
             Console.WriteLine();
 
             int scalar = 10;
 
             Console.Write("Результат умножения вектора {0} на число {1} = ", vector4, scalar);
-            vector4.GetMultiplicationByScalar(scalar);
+            vector4.MultiplyByScalar(scalar);
             Console.WriteLine(vector4);
             Console.WriteLine();
 
             Console.Write("Результат разворота вектора {0} = ", vector3);
-            vector3.GetRotatedVector();
+            vector3.RotateVector();
             Console.WriteLine(vector3);
             Console.WriteLine();
 
@@ -39,7 +39,7 @@ namespace Vectors
             Console.WriteLine("Третья компонента вектора {0} = {1}", vector3, vector3.GetComponent(3));
             Console.WriteLine();
 
-            vector3.ChangeComponent(3, 45.3);
+            vector3.SetComponent(3, 45.3);
 
             Console.WriteLine("Третья компонента вектора теперь равна {0} = {1}", vector3, vector3.GetComponent(3));
             Console.WriteLine();
