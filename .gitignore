@@ -335,3 +335,8 @@ ASALocalRun/
 
 # Local History for Visual Studio
 .localhistory/
+/Matrices/Matrices.csproj
+/Matrices/Matrix.cs
+/Matrices/Program.cs
+/Matrices/App.config
+/Matrices/Properties/AssemblyInfo.cs

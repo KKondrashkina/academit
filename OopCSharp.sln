@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shapes", "Shapes\Shapes.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vectors", "Vectors\Vectors.csproj", "{F5CB8148-F6CA-4799-85FF-C35A083BE6AD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Matrices", "Matrices\Matrices.csproj", "{509E97AB-D088-4459-8FA4-0F624DC770FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{F5CB8148-F6CA-4799-85FF-C35A083BE6AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5CB8148-F6CA-4799-85FF-C35A083BE6AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5CB8148-F6CA-4799-85FF-C35A083BE6AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{509E97AB-D088-4459-8FA4-0F624DC770FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{509E97AB-D088-4459-8FA4-0F624DC770FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{509E97AB-D088-4459-8FA4-0F624DC770FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{509E97AB-D088-4459-8FA4-0F624DC770FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

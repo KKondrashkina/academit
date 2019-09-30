@@ -11,39 +11,43 @@ namespace Vectors
             Vector vector3 = new Vector(new double[] { 56.77, 7.5, 86.8, 6.7, 4.6, 66.8, 90.6, 12.4 });
             Vector vector4 = new Vector(6, new double[] { 5.6, 7.7, 6.8 });
 
-            Console.WriteLine("Сумма векторов {0} и {1} = {2}", vector3, vector4, vector3.GetSum(vector4));
+            Console.Write("Сумма векторов {0} и {1} = ", vector3, vector4);
+            vector3.GetSum(vector4);
+            Console.WriteLine(vector3);
             Console.WriteLine();
 
-            Console.WriteLine("Разность векторов {0} и {1} = {2}", vector3, vector4, vector3.GetDifference(vector4));
-            Console.WriteLine();
-
-            Console.WriteLine("Разность векторов {0} и {1} = {2}", vector4, vector3, vector4.GetDifference(vector3));
+            Console.Write("Разность векторов {0} и {1} = ", vector3, vector4);
+            vector4.GetDifference(vector3);
+            Console.WriteLine(vector4);
             Console.WriteLine();
 
             int scalar = 10;
 
-            Console.WriteLine("Результат умножения вектора {0} на число {1} = {2}", vector4, scalar,
-                vector4.GetMultiplicationByScalar(scalar));
+            Console.Write("Результат умножения вектора {0} на число {1} = ", vector4, scalar);
+            vector4.GetMultiplicationByScalar(scalar);
+            Console.WriteLine(vector4);
             Console.WriteLine();
 
-            Console.WriteLine("Результат разворота вектора {0} = {1}", vector3, vector3.GetRotatedVector());
+            Console.Write("Результат разворота вектора {0} = ", vector3);
+            vector3.GetRotatedVector();
+            Console.WriteLine(vector3);
             Console.WriteLine();
 
             Console.WriteLine("Длина вектора {0} = {1}", vector3, vector3.GetLength());
             Console.WriteLine();
 
-            Console.WriteLine("Третья компонента вектора {0} = {1}", vector3, vector3.GetOrChangeComponent(3));
+            Console.WriteLine("Третья компонента вектора {0} = {1}", vector3, vector3.GetComponent(3));
             Console.WriteLine();
 
-            vector3.GetOrChangeComponent(3, 45.3);
+            vector3.ChangeComponent(3, 45.3);
 
-            Console.WriteLine("Третья компонента вектора теперь равна {0} = {1}", vector3, vector3.GetOrChangeComponent(3));
+            Console.WriteLine("Третья компонента вектора теперь равна {0} = {1}", vector3, vector3.GetComponent(3));
             Console.WriteLine();
 
             Console.WriteLine("Сумма векторов {0} и {1} = {2}", vector3, vector4, Vector.AddVectors(vector3, vector4));
             Console.WriteLine();
 
-            Console.WriteLine("Разность векторов {0} и {1} = {2}", vector3, vector4, Vector.SubstractVectors(vector3, vector4));
+            Console.WriteLine("Разность векторов {0} и {1} = {2}", vector3, vector4, Vector.SubtractVectors(vector3, vector4));
             Console.WriteLine();
 
             Console.WriteLine("Произведение векторов {0} и {1} = {2}", vector3, vector4, Vector.MultiplyVectors(vector3, vector4));

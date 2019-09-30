@@ -21,9 +21,9 @@ namespace Shapes.ShapesClasses
             Y3 = y3;
         }
 
-        private static double GetSegmentLength(double coordinate1, double coordinate2, double coordinate3, double coordinate4)
+        private static double GetSegmentLength(double x1, double y1, double x2, double y2)
         {
-            return Math.Sqrt(Math.Pow(coordinate1 - coordinate2, 2) + Math.Pow(coordinate3 - coordinate4, 2));
+            return Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 - y1, 2));
         }
 
         public double GetWidth()
@@ -43,7 +43,7 @@ namespace Shapes.ShapesClasses
 
         public double GetPerimeter()
         {
-            return GetSegmentLength(X2, X1, Y2, Y1) + GetSegmentLength(X3, X2, Y3, Y2) + GetSegmentLength(X3, X1, Y3, Y1);
+            return GetSegmentLength(X1, Y1, X2, Y2) + GetSegmentLength(X2, Y2, X3, Y3) + GetSegmentLength(X1, Y1, X3, Y3);
         }
 
         public override string ToString()
