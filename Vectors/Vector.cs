@@ -43,14 +43,9 @@ namespace Vectors
                 throw new ArgumentException("Размерность не может быть меньше 1.");
             }
 
-            if (size < array.Length)
-            {
-                throw new ArgumentException("Указанный размер не может быть меньше размера переданного массива.");
-            }
+            components = new double[size];
 
-            components = new double[Math.Max(size, array.Length)];
-
-            Array.Copy(array, 0, components, 0, array.Length);
+            Array.Copy(array, 0, components, 0, Math.Min(size, array.Length));
         }
 
         public int GetSize()
@@ -60,18 +55,15 @@ namespace Vectors
 
         public void AddVector(Vector vector)
         {
-            int max = Math.Max(GetSize(), vector.GetSize());
+            int size1 = GetSize();
+            int size2 = vector.GetSize();
 
-            if (GetSize() > vector.GetSize())
+            if (size1 < size2)
             {
-                Array.Resize(ref vector.components, max);
-            }
-            else
-            {
-                Array.Resize(ref components, max);
+                Array.Resize(ref components, size2);
             }
 
-            for (int i = 0; i < max; i++)
+            for (int i = 0; i < size2; i++)
             {
                 components[i] += vector.components[i];
             }
@@ -79,18 +71,15 @@ namespace Vectors
 
         public void SubtractVector(Vector vector)
         {
-            int max = Math.Max(GetSize(), vector.GetSize());
+            int size1 = GetSize();
+            int size2 = vector.GetSize();
 
-            if (GetSize() > vector.GetSize())
+            if (size1 < size2)
             {
-                Array.Resize(ref vector.components, max);
-            }
-            else
-            {
-                Array.Resize(ref components, max);
+                Array.Resize(ref components, size2);
             }
 
-            for (int i = 0; i < max; i++)
+            for (int i = 0; i < size2; i++)
             {
                 components[i] -= vector.components[i];
             }
