@@ -124,7 +124,7 @@ namespace Vectors
         {
             Vector vectorCopy = new Vector(vector1);
 
-            vectorCopy.AddVector(vector2);
+            vectorCopy.SubtractVector(vector2);
 
             return vectorCopy;
         }
@@ -133,7 +133,7 @@ namespace Vectors
         {
             Vector vectorCopy = new Vector(vector1);
 
-            vectorCopy.SubtractVector(vector2);
+            vectorCopy.AddVector(vector2);
 
             return vectorCopy;
         }

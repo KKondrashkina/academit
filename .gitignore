@@ -332,11 +332,3 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder
 .mfractor/
-
-# Local History for Visual Studio
-.localhistory/
-/Matrices/Matrices.csproj
-/Matrices/Matrix.cs
-/Matrices/Program.cs
-/Matrices/App.config
-/Matrices/Properties/AssemblyInfo.cs
