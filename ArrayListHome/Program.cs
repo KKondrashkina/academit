@@ -9,21 +9,12 @@ namespace ArrayListHome
     {
         static void Main(string[] args)
         {
-            try
-            {
-                List<string> stringsList = ReadFileInList("file.txt");
+            List<string> stringsList = ReadFileInList("fie.txt");
 
-                foreach (string line in stringsList)
-                {
-                    Console.WriteLine(line);
-                }
-            }
-            catch
+            foreach (string line in stringsList)
             {
-                throw new FileNotFoundException("Файл не найден.");
+                Console.WriteLine(line);
             }
-
-            
 
             Console.WriteLine();
 
@@ -83,6 +74,11 @@ namespace ArrayListHome
                     }
                 }
             }
+            else
+            {
+
+                throw new FileNotFoundException("Файл не найден.");
+            }
 
             return file;
         }
@@ -104,7 +100,7 @@ namespace ArrayListHome
         {
             List<int> newNumbersList = new List<int>();
 
-            foreach(int number in numbers)
+            foreach (int number in numbers)
             {
                 if (!newNumbersList.Contains(number))
                 {
