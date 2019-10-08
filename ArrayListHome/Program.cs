@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 
 namespace ArrayListHome
@@ -10,12 +9,21 @@ namespace ArrayListHome
     {
         static void Main(string[] args)
         {
-            List<string> file = ReadFileInList("file.txt");
-
-            foreach (string line in file)
+            try
             {
-                Console.WriteLine(line);
+                List<string> stringsList = ReadFileInList("file.txt");
+
+                foreach (string line in stringsList)
+                {
+                    Console.WriteLine(line);
+                }
             }
+            catch
+            {
+                throw new FileNotFoundException("Файл не найден.");
+            }
+
+            
 
             Console.WriteLine();
 
@@ -40,7 +48,7 @@ namespace ArrayListHome
             Console.WriteLine();
 
             List<int> numbers2 = new List<int> { 1, 2, 3, 4, 2, 3, 5, 6, 7, 5, 8, 9, 7, 1, 10, 3 };
-            List<int> numbers3 = RemoveDuplicate(numbers2);
+            List<int> numbers3 = GetListWithoutDuplicates(numbers2);
 
             Console.Write("Список ");
 
@@ -81,7 +89,7 @@ namespace ArrayListHome
 
         public static void RemoveEvenNumbers(List<int> numbers)
         {
-            for (int i = 0; i < numbers.Count(); i++)
+            for (int i = 0; i < numbers.Count; i++)
             {
                 if (numbers[i] % 2 == 0)
                 {
@@ -92,17 +100,16 @@ namespace ArrayListHome
             }
         }
 
-        public static List<int> RemoveDuplicate(List<int> numbers)
+        public static List<int> GetListWithoutDuplicates(List<int> numbers)
         {
             List<int> newNumbersList = new List<int>();
 
-            for (int i = 0; i < numbers.Count(); i++)
+            foreach(int number in numbers)
             {
-                if (!newNumbersList.Contains(numbers[i]))
+                if (!newNumbersList.Contains(number))
                 {
-                    newNumbersList.Add(numbers[i]);
+                    newNumbersList.Add(number);
                 }
-
             }
 
             return newNumbersList;
