@@ -9,7 +9,7 @@ namespace ArrayListHome
     {
         static void Main(string[] args)
         {
-            List<string> stringsList = ReadFileInList("fie.txt");
+            List<string> stringsList = ReadFileInList("file.txt");
 
             foreach (string line in stringsList)
             {
@@ -60,27 +60,24 @@ namespace ArrayListHome
 
         public static List<string> ReadFileInList(string readPath)
         {
-            List<string> file = new List<string>();
-
-            if (File.Exists(readPath))
+            if (!File.Exists(readPath))
             {
-                using (StreamReader reader = new StreamReader(readPath, Encoding.GetEncoding(1251)))
-                {
-                    string currentLine;
+                Console.WriteLine("Файл не найден.");
+            }
 
-                    while ((currentLine = reader.ReadLine()) != null)
-                    {
-                        file.Add(currentLine);
-                    }
+            List<string> stringsList = new List<string>();
+
+            using (StreamReader reader = new StreamReader(readPath, Encoding.GetEncoding(1251)))
+            {
+                string currentLine;
+
+                while ((currentLine = reader.ReadLine()) != null)
+                {
+                    stringsList.Add(currentLine);
                 }
             }
-            else
-            {
 
-                throw new FileNotFoundException("Файл не найден.");
-            }
-
-            return file;
+            return stringsList;
         }
 
         public static void RemoveEvenNumbers(List<int> numbers)
