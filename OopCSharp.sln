@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Matrices", "Matrices\Matric
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArrayListHome", "ArrayListHome\ArrayListHome.csproj", "{909B982D-34C6-4E2D-980D-C0E4CD097D50}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "List", "List\List.csproj", "{CF55DC6C-0255-455F-A6CA-ABC35C10024D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{909B982D-34C6-4E2D-980D-C0E4CD097D50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{909B982D-34C6-4E2D-980D-C0E4CD097D50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{909B982D-34C6-4E2D-980D-C0E4CD097D50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF55DC6C-0255-455F-A6CA-ABC35C10024D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF55DC6C-0255-455F-A6CA-ABC35C10024D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF55DC6C-0255-455F-A6CA-ABC35C10024D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF55DC6C-0255-455F-A6CA-ABC35C10024D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
