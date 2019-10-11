@@ -9,11 +9,18 @@ namespace ArrayListHome
     {
         static void Main(string[] args)
         {
-            List<string> stringsList = ReadFileInList("file.txt");
-
-            foreach (string line in stringsList)
+            try
             {
-                Console.WriteLine(line);
+                List<string> stringsList = ReadFileInList("file.txt");
+
+                foreach (string line in stringsList)
+                {
+                    Console.WriteLine(line);
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Файл не найден.");
             }
 
             Console.WriteLine();
@@ -62,7 +69,7 @@ namespace ArrayListHome
         {
             if (!File.Exists(readPath))
             {
-                Console.WriteLine("Файл не найден.");
+                throw new FileNotFoundException("Файл не найден.");
             }
 
             List<string> stringsList = new List<string>();
