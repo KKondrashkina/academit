@@ -14,16 +14,16 @@ namespace Matrices
                 new Vector(new double[] { 3.7, 6.5, 7.8 }) });
             Matrix matrix5 = new Matrix(matrix4);
 
-            Console.WriteLine("Размер матрицы {0} = {1} на {2}", matrix1, matrix1.GetHorizontalSize(), matrix1.GetVerticalSize());
+            Console.WriteLine("Размер матрицы {0} = {1} на {2}", matrix1, matrix1.GetColumnsCount(), matrix1.GetRowsCount());
             Console.WriteLine();
-            Console.WriteLine("Размер матрицы {0} = {1} на {2}", matrix2, matrix2.GetHorizontalSize(), matrix2.GetVerticalSize());
+            Console.WriteLine("Размер матрицы {0} = {1} на {2}", matrix2, matrix2.GetColumnsCount(), matrix2.GetRowsCount());
             Console.WriteLine();
-            Console.WriteLine("Размер матрицы {0} = {1} на {2}", matrix3, matrix3.GetHorizontalSize(), matrix3.GetVerticalSize());
+            Console.WriteLine("Размер матрицы {0} = {1} на {2}", matrix3, matrix3.GetColumnsCount(), matrix3.GetRowsCount());
             Console.WriteLine();
-            Console.WriteLine("Размер матрицы {0} = {1} на {2}", matrix4, matrix4.GetHorizontalSize(), matrix4.GetVerticalSize());
+            Console.WriteLine("Размер матрицы {0} = {1} на {2}", matrix4, matrix4.GetColumnsCount(), matrix4.GetRowsCount());
             Console.WriteLine();
             Console.WriteLine();
-            
+
             int index = 1;
 
             Console.WriteLine("Горизонтальный вектор номер {0} = {1}", index, matrix3.GetRow(index));
@@ -45,12 +45,12 @@ namespace Matrices
             Console.WriteLine(matrix3);
             Console.WriteLine();
 
-            Matrix matrix6 = new Matrix(new double[,] { { 5, 6 }, { 3, 2 }});
+            Matrix matrix6 = new Matrix(new double[,] { { 5, 6 }, { 3, 2 } });
 
             Console.WriteLine("Определитель матрицы {0} = {1}", matrix6, matrix6.GetDeterminant());
             Console.WriteLine();
 
-            Vector vector = new Vector(new double[] { -1, -10});
+            Vector vector = new Vector(new double[] { -1, -10 });
 
             Console.Write("Результат умножения матрицы {0} на вектор {1} = {2}", matrix3, vector, matrix3.MultiplyByVector(vector));
             Console.WriteLine();
@@ -69,7 +69,7 @@ namespace Matrices
             Console.WriteLine();
             Console.WriteLine("Разность матриц {0} и {1} = {2}", matrix4, matrix3, Matrix.SubtractMatrices(matrix4, matrix3));
             Console.WriteLine();
-            Console.WriteLine("Результат умножения матриц {0} и {1} = {2}", matrix5, matrix6, Matrix.MultiplyMatrices(matrix5, matrix6));
+            Console.WriteLine("Результат умножения матриц {0} и {1} = {2}", matrix6, matrix5, Matrix.MultiplyMatrices(matrix6, matrix5));
 
             Console.ReadKey();
         }
