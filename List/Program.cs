@@ -14,7 +14,7 @@ namespace List
             list.AddFirst(1);
             list.Add(2, 3);
 
-            SinglyLinkedList<int> listCopy = list.Copy();
+            SinglyLinkedList<int> listCopy =list.Copy();
 
             Console.WriteLine("Количество элементов в списке {0} = {1}", list, list.Count);
             Console.WriteLine();
