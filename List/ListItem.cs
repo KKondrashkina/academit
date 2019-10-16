@@ -4,7 +4,7 @@
     {
         public ListItem(T data)
         {
-            Data =data;
+            Data = data;
         }
 
         public ListItem(T data, ListItem<T> next)

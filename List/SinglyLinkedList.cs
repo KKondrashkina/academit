@@ -11,7 +11,7 @@ namespace List
 
         public T GetFirstElementValue()
         {
-            if (Count ==0)
+            if (Count == 0)
             {
                 throw new NullReferenceException("Ошибка! Список пуст.");
             }
