@@ -2,9 +2,6 @@
 {
     class ListItem<T>
     {
-        private T data;
-        private ListItem<T> next;
-
         public ListItem(T data)
         {
             Data = data;

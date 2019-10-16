@@ -12,26 +12,26 @@ namespace List
             list.AddFirst(4);
             list.AddFirst(2);
             list.AddFirst(1);
-            list.AddByIndex(2, 3);
+            list.Add(2, 3);
 
             SinglyLinkedList<int> listCopy = list.Copy();
 
-            Console.WriteLine("Количество элементов в списке {0} = {1}", list, list.GetCount());
+            Console.WriteLine("Количество элементов в списке {0} = {1}", list, list.Count);
             Console.WriteLine();
 
             Console.WriteLine("Первый элемент списка {0} = {1}", list, list.GetFirstElementValue());
             Console.WriteLine();
 
-            Console.WriteLine("Элемент под индексом три в списке {0} = {1}", list, list.GetValueByIndex(3));
+            Console.WriteLine("Элемент под индексом три в списке {0} = {1}", list, list.GetValue(3));
             Console.WriteLine();
 
             Console.Write("Cписок {0} теперь равен ", list);
-            list.SetValueByIndex(2, 8);
+            list.SetValue(2, 8);
             Console.Write(list);
             Console.WriteLine();
 
             Console.Write("Cписок {0} теперь равен ", list);
-            list.RemoveByIndex(3);
+            list.Remove(3);
             Console.Write(list);
             Console.WriteLine();
 
@@ -41,7 +41,7 @@ namespace List
             Console.WriteLine();
 
             Console.Write("Cписок {0} теперь равен ", list);
-            list.Expand();
+            list.Reverse();
             Console.Write(list);
             Console.WriteLine();
 
