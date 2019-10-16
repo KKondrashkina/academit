@@ -36,7 +36,7 @@ namespace Matrices
             Console.WriteLine();
 
             Console.Write("Результат транспонирования матрицы {0} = ", matrix4);
-            matrix4.TransposeMatrix();
+            matrix4.Transpose();
             Console.WriteLine(matrix4);
             Console.WriteLine();
 
