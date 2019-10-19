@@ -353,7 +353,8 @@ namespace Matrices
                   .Append(", ");
             }
 
-            sb.Append('}');
+            sb.Remove(sb.Length - 2, 1)
+              .Append('}');
 
             return sb.ToString();
         }
