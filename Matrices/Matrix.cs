@@ -12,12 +12,12 @@ namespace Matrices
         {
             if (columnsCount <= 0)
             {
-                throw new ArgumentException($"{nameof(columnsCount)} не может быть меньше 1.");
+                throw new ArgumentException($"{nameof(columnsCount)} не может быть меньше 1.", nameof(columnsCount));
             }
 
             if (rowsCount <= 0)
             {
-                throw new ArgumentException($"{nameof(rowsCount)} не может быть меньше 1.");
+                throw new ArgumentException($"{nameof(rowsCount)} не может быть меньше 1.", nameof(rowsCount));
             }
 
             rows = new Vector[rowsCount];
@@ -45,7 +45,7 @@ namespace Matrices
 
             if (columnsCount <= 0 || rowsCount <= 0)
             {
-                throw new ArgumentException($"Размеры {nameof(array)} не могут быть меньше 1.");
+                throw new ArgumentException($"Размеры {nameof(array)} не могут быть меньше 1.", nameof(array));
             }
 
             rows = new Vector[rowsCount];
@@ -67,7 +67,7 @@ namespace Matrices
         {
             if (vectors.Length == 0)
             {
-                throw new ArgumentException($"Длина {nameof(vectors)} не может быть меньше 1.");
+                throw new ArgumentException($"Длина {nameof(vectors)} не может быть меньше 1.", nameof(vectors));
             }
 
             int maxSize = 0;
@@ -117,7 +117,7 @@ namespace Matrices
 
             if (vectorSize != GetColumnsCount())
             {
-                throw new ArgumentException($"Размер вектора {nameof(newValue)} не соответствует размеру строк матрицы.");
+                throw new ArgumentException($"Размер вектора {nameof(newValue)} не соответствует размеру строк матрицы.", nameof(newValue));
             }
 
             rows[index] = new Vector(newValue);
@@ -226,7 +226,7 @@ namespace Matrices
 
             if (vectorSize != columnsCount)
             {
-                throw new ArgumentException($"Размер вектора {nameof(vector)} не соответствует размеру строк матрицы.");
+                throw new ArgumentException($"Размер вектора {nameof(vector)} не соответствует размеру строк матрицы.", nameof(vector));
             }
 
             Vector newVector = new Vector(rowsCount);
@@ -250,7 +250,7 @@ namespace Matrices
 
             if (rowsCount != matrixRowsCount || columnsCount != matrixColumnsCount)
             {
-                throw new ArgumentException($"Размер матрицы {nameof(matrix)} не подходящий.");
+                throw new ArgumentException($"Размер матрицы {nameof(matrix)} не подходящий.", nameof(matrix));
             }
 
             for (int i = 0; i < GetRowsCount(); i++)
@@ -268,7 +268,7 @@ namespace Matrices
 
             if (rowsCount != matrixRowsCount || columnsCount != matrixColumnsCount)
             {
-                throw new ArgumentException($"Размер матрицы {nameof(matrix)} не подходящий.");
+                throw new ArgumentException($"Размер матрицы {nameof(matrix)} не подходящий.", nameof(matrix));
             }
 
             for (int i = 0; i < GetRowsCount(); i++)
@@ -286,7 +286,7 @@ namespace Matrices
 
             if (matrix1RowsCount != matrix2RowsCount || matrix1ColumnsCount != matrix2ColumnsCount)
             {
-                throw new ArgumentException($"Размер матрицы {nameof(matrix1)} не равен размеру матрицы {nameof(matrix1)}.");
+                throw new ArgumentException($"Размер матрицы {nameof(matrix1)} не равен размеру матрицы {nameof(matrix2)}.", nameof(matrix2));
             }
 
             Matrix matrixCopy = new Matrix(matrix1);
@@ -305,7 +305,7 @@ namespace Matrices
 
             if (matrix1RowsCount != matrix2RowsCount || matrix1ColumnsCount != matrix2ColumnsCount)
             {
-                throw new ArgumentException($"Размер матрицы {nameof(matrix1)} не равен размеру матрицы {nameof(matrix1)}.");
+                throw new ArgumentException($"Размер матрицы {nameof(matrix1)} не равен размеру матрицы {nameof(matrix2)}.", nameof(matrix2));
             }
 
             Matrix matrixCopy = new Matrix(matrix1);
@@ -322,7 +322,7 @@ namespace Matrices
 
             if (matrix1ColumnsCount != matrix2RowsCount)
             {
-                throw new ArgumentException($"Матрицы {nameof(matrix1)} и {nameof(matrix2)} не согласованы.");
+                throw new ArgumentException($"Матрицы {nameof(matrix1)} и {nameof(matrix2)} не согласованы.", nameof(matrix2));
             }
 
             int matrix1RowsCount = matrix1.GetRowsCount();
@@ -353,8 +353,7 @@ namespace Matrices
                   .Append(", ");
             }
 
-            v
-              .Append('}');
+            sb.Append('}');
 
             return sb.ToString();
         }
