@@ -7,13 +7,13 @@ namespace List
     {
         private ListItem<T> head;
 
-        public int Count { get; private set; }
+        public int Count { get; set; }
 
         public T GetFirstElementValue()
         {
             if (Count == 0)
             {
-                throw new InvalidOperationException("Ошибка! Список пуст.");
+                throw new NullReferenceException("Ошибка! Список пуст.");
             }
 
             return head.Data;
@@ -142,7 +142,7 @@ namespace List
         {
             if (Count == 0)
             {
-                throw new InvalidOperationException("Ошибка! Список пуст.");
+                throw new NullReferenceException("Ошибка! Список пуст.");
             }
 
             T oldValue = head.Data;
@@ -158,7 +158,7 @@ namespace List
         {
             if (Count == 0)
             {
-                return;
+                throw new NullReferenceException("Ошибка! Список пуст.");
             }
 
             ListItem<T> currentItem = head;
@@ -183,7 +183,7 @@ namespace List
         {
             if (Count == 0)
             {
-                return new SinglyLinkedList<T>();
+                throw new NullReferenceException("Ошибка! Список пуст.");
             }
 
             SinglyLinkedList<T> newList = new SinglyLinkedList<T>();
@@ -224,18 +224,15 @@ namespace List
 
             ListItem<T> currentItem = head;
 
-            sb.Append("{ ");
-
-            for (int i = 0; i < Count; i++)
+            while (currentItem.Next != null)
             {
                 sb.Append(currentItem.Data)
-                    .Append(", ");
+                  .Append(", ");
 
                 currentItem = currentItem.Next;
             }
 
-            sb.Remove(sb.Length - 2, 1)
-                .Append('}');
+            sb.Append(currentItem.Data);
 
             return sb.ToString();
         }
