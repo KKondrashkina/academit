@@ -350,7 +350,7 @@ namespace Matrices
             foreach (Vector vector in rows)
             {
                 sb.Append(vector)
-                  .Append(", ");
+                    .Append(", ");
             }
 
             sb.Append('}');

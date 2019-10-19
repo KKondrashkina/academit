@@ -121,7 +121,6 @@ namespace List
                     if (counter == 0)
                     {
                         RemoveFirst();
-
                         return true;
                     }
 
