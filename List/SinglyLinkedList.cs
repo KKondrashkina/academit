@@ -7,13 +7,13 @@ namespace List
     {
         private ListItem<T> head;
 
-        public int Count { get; set; }
+        public int Count { get; private set; }
 
         public T GetFirstElementValue()
         {
             if (Count == 0)
             {
-                throw new NullReferenceException("Ошибка! Список пуст.");
+                throw new InvalidOperationException("Ошибка! Список пуст.");
             }
 
             return head.Data;
@@ -110,20 +110,17 @@ namespace List
             ListItem<T> currentItem = head;
             ListItem<T> previousItem = currentItem;
 
-            int counter = Count;
-
-            while (counter != 0)
+            if ((head.Data == null && value == null) || head.Data.Equals(value))
             {
-                counter--;
+                RemoveFirst();
 
-                if (currentItem.Data.Equals(value))
+                return true;
+            }
+
+            for (int i = 0; i < Count; i++)
+            {
+                if ((currentItem.Data == null && value == null) || currentItem.Data.Equals(value))
                 {
-                    if (counter == 0)
-                    {
-                        RemoveFirst();
-                        return true;
-                    }
-
                     previousItem.Next = previousItem.Next.Next;
                     Count--;
 
@@ -141,7 +138,7 @@ namespace List
         {
             if (Count == 0)
             {
-                throw new NullReferenceException("Ошибка! Список пуст.");
+                throw new InvalidOperationException("Ошибка! Список пуст.");
             }
 
             T oldValue = head.Data;
@@ -157,7 +154,7 @@ namespace List
         {
             if (Count == 0)
             {
-                throw new NullReferenceException("Ошибка! Список пуст.");
+                return;
             }
 
             ListItem<T> currentItem = head;
@@ -182,7 +179,7 @@ namespace List
         {
             if (Count == 0)
             {
-                throw new NullReferenceException("Ошибка! Список пуст.");
+                return new SinglyLinkedList<T>();
             }
 
             SinglyLinkedList<T> newList = new SinglyLinkedList<T>();
@@ -222,16 +219,22 @@ namespace List
             StringBuilder sb = new StringBuilder();
 
             ListItem<T> currentItem = head;
+            sb.Append("{ ");
 
-            while (currentItem.Next != null)
+            for (int i = 0; i < Count; i++)
             {
                 sb.Append(currentItem.Data)
-                  .Append(", ");
+                    .Append(", ");
 
                 currentItem = currentItem.Next;
             }
 
-            sb.Append(currentItem.Data);
+            if (Count != 0)
+            {
+                sb.Remove(sb.Length - 2, 1);
+            }
+
+            sb.Append('}');
 
             return sb.ToString();
         }
