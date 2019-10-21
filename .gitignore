@@ -323,11 +323,3 @@ OpenCover/
 
 # Azure Stream Analytics local run output
 ASALocalRun/
-
-# MSBuild Binary and Structured Log
-*.binlog
-/MyHashTable/App.config
-/MyHashTable/HashTable.cs
-/MyHashTable/MyHashTable.csproj
-/MyHashTable/Properties/AssemblyInfo.cs
-/MyHashTable/Program.cs
