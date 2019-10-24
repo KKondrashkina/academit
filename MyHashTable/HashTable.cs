@@ -26,7 +26,16 @@ namespace MyHashTable
 
         public void Add(T item)
         {
-            int index = Math.Abs(item.GetHashCode() % items.Length);
+            int index;
+
+            if (item == null)
+            {
+                index = 0;
+            }
+            else
+            {
+                index = Math.Abs(item.GetHashCode() % items.Length);
+            }
 
             if (items[index] == null)
             {
@@ -54,7 +63,21 @@ namespace MyHashTable
 
         public bool Contains(T item)
         {
-            int index = Math.Abs(item.GetHashCode() % items.Length);
+            int index;
+
+            if (item == null)
+            {
+                index = 0;
+            }
+            else
+            {
+                index = Math.Abs(item.GetHashCode() % items.Length);
+            }
+
+            if (items[index] == null)
+            {
+                return false;
+            }
 
             return items[index].Contains(item);
         }
@@ -120,7 +143,21 @@ namespace MyHashTable
 
         public bool Remove(T item)
         {
-            int index = Math.Abs(item.GetHashCode() % items.Length);
+            int index;
+
+            if (item == null)
+            {
+                index = 0;
+            }
+            else
+            {
+                index = Math.Abs(item.GetHashCode() % items.Length);
+            }
+
+            if (items[index] == null)
+            {
+                return false;
+            }
 
             if (items[index].Remove(item))
             {
