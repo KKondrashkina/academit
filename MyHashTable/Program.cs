@@ -50,6 +50,8 @@ namespace MyHashTable
             Console.WriteLine("Теперь таблица равна:");
             Console.WriteLine(table);
             Console.WriteLine();
+
+            Console.ReadKey();
         }
     }
 }

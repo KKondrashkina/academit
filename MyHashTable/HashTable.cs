@@ -7,7 +7,7 @@ namespace MyHashTable
 {
     class HashTable<T> : ICollection<T>
     {
-        private List<T>[] items;
+        private readonly List<T>[] items;
 
         public HashTable(int size)
         {
@@ -16,13 +16,7 @@ namespace MyHashTable
 
         public int Count { get; private set; }
 
-        public bool IsReadOnly
-        {
-            get
-            {
-                return false;
-            }
-        }
+        public bool IsReadOnly => false;
 
         public void Add(T item)
         {
