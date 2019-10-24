@@ -110,7 +110,7 @@ namespace List
             ListItem<T> currentItem = head;
             ListItem<T> previousItem = currentItem;
 
-            if ((head.Data == null && value == null) || head.Data.Equals(value))
+            if (Equals(value, head.Data))
             {
                 RemoveFirst();
 
@@ -182,9 +182,10 @@ namespace List
                 return new SinglyLinkedList<T>();
             }
 
-            SinglyLinkedList<T> newList = new SinglyLinkedList<T>();
-
-            newList.Count = Count;
+            SinglyLinkedList<T> newList = new SinglyLinkedList<T>
+            {
+                Count = Count
+            };
 
             ListItem<T> currentItem = head;
             ListItem<T> newHead = new ListItem<T>(head.Data);

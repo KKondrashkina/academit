@@ -8,9 +8,15 @@ namespace MyHashTable
     class HashTable<T> : ICollection<T>
     {
         private readonly List<T>[] items;
+        private int modCount = 0;
 
         public HashTable(int size)
         {
+            if (size == 0)
+            {
+                throw new ArgumentException(nameof(size), "Размер не может быть равен 0.");
+            }
+
             items = new List<T>[size];
         }
 
@@ -30,6 +36,8 @@ namespace MyHashTable
             items[index].Add(item);
 
             Count++;
+
+            modCount++;
         }
 
         public void Clear()
@@ -40,48 +48,47 @@ namespace MyHashTable
             }
 
             Count = 0;
+
+            modCount++;
         }
 
         public bool Contains(T item)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == null)
-                {
-                    continue;
-                }
+            int index = Math.Abs(item.GetHashCode() % items.Length);
 
-                foreach (T tableItem in items[i])
-                {
-                    if (tableItem.Equals(item))
-                    {
-                        return true;
-                    }
-                }
-            }
-
-            return false;
+            return items[index].Contains(item);
         }
 
         public void CopyTo(T[] array, int arrayIndex)
         {
+            if (array == null)
+            {
+                throw new ArgumentNullException(nameof(array), $"Свойство {nameof(array)} имеет значение null.");
+            }
+
+            if (arrayIndex < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(arrayIndex), $"Значение параметра {nameof(arrayIndex)} меньше 0.");
+            }
+
             if (array.Length - arrayIndex < Count)
             {
-                throw new ArgumentException("Размер массива слишком мал.", nameof(array));
+                throw new ArgumentException(nameof(array), "Число элементов в исходной коллекции больше доступного места от положения, " +
+                    $"заданного значением параметра {nameof(arrayIndex)}, до конца массива назначения {nameof(array)}.");
             }
 
             int index = 0;
 
-            for (int i = 0; i < items.Length; i++)
+            foreach (List<T> row in items)
             {
-                if (items[i] == null)
+                if (row == null)
                 {
                     continue;
                 }
 
-                for (int j = 0; j < items[i].Count; j++)
+                foreach (T item in row)
                 {
-                    array[arrayIndex + index] = items[i][j];
+                    array[arrayIndex + index] = item;
 
                     index++;
                 }
@@ -90,15 +97,22 @@ namespace MyHashTable
 
         public IEnumerator<T> GetEnumerator()
         {
-            for (int i = 0; i < items.Length; i++)
+            int oldModCount = modCount;
+
+            foreach (List<T> row in items)
             {
-                if (items[i] == null)
+                if (row == null)
                 {
                     continue;
                 }
 
-                foreach (T tableItem in items[i])
+                foreach (T tableItem in row)
                 {
+                    if (oldModCount != modCount)
+                    {
+                        throw new InvalidOperationException("Список был изменен.");
+                    }
+
                     yield return tableItem;
                 }
             }
@@ -106,22 +120,18 @@ namespace MyHashTable
 
         public bool Remove(T item)
         {
-            for (int i = 0; i < items.Length; i++)
+            int index = Math.Abs(item.GetHashCode() % items.Length);
+
+            if (items[index].Remove(item))
             {
-                if (items[i] == null)
+                if (items[index].Count == 0)
                 {
-                    continue;
+                    items[index] = null;
                 }
 
-                if (items[i].Remove(item))
-                {
-                    if (items[i].Count == 0)
-                    {
-                        items[i] = null;
-                    }
+                modCount++;
 
-                    return true;
-                }
+                return true;
             }
 
             return false;
@@ -136,11 +146,11 @@ namespace MyHashTable
         {
             StringBuilder sb = new StringBuilder();
 
-            for (int i = 0; i < items.Length; i++)
+            foreach (List<T> row in items)
             {
                 sb.Append("[ ");
 
-                if (items[i] == null)
+                if (row == null)
                 {
                     sb.Append(']')
                         .Append(Environment.NewLine);
@@ -148,7 +158,7 @@ namespace MyHashTable
                     continue;
                 }
 
-                foreach (T tableItem in items[i])
+                foreach (T tableItem in row)
                 {
                     sb.Append(tableItem)
                         .Append(", ");
