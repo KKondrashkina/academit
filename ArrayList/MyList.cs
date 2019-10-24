@@ -8,6 +8,18 @@ namespace ArrayList
     class MyList<T> : IList<T>
     {
         private T[] items = new T[10];
+        private int modCount = 0;
+
+        public MyList()
+        {
+            Capacity = items.Length;
+        }
+
+        public MyList(int capacity)
+        {
+            Capacity = capacity;
+            items = new T[capacity];
+        }
 
         public T this[int index]
         {
@@ -29,8 +41,12 @@ namespace ArrayList
                 }
 
                 items[index] = value;
+
+                modCount++;
             }
         }
+
+        public int Capacity { get; set; }
 
         public int Count { get; private set; }
 
@@ -52,38 +68,59 @@ namespace ArrayList
             items[Count] = item;
 
             Count++;
+
+            modCount++;
         }
 
         public void Clear()
         {
             Count = 0;
+
+            modCount++;
         }
 
         public bool Contains(T item)
         {
-            for (int i = 0; i < Count; i++)
+            if (IndexOf(item) == -1)
             {
-                if (items[i].Equals(item))
-                {
-                    return true;
-                }
+                return false;
             }
 
-            return false;
+            return true;
         }
 
         public void CopyTo(T[] array, int arrayIndex)
         {
-            for (int i = 0; i < Count; i++, arrayIndex++)
+            if (array == null)
             {
-                array[arrayIndex] = items[i];
+                throw new ArgumentNullException(nameof(array), $"Свойство {nameof(array)} имеет значение null.");
             }
+
+            if (arrayIndex < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(arrayIndex), $"Значение параметра {nameof(arrayIndex)} меньше 0.");
+            }
+
+            if (array.Length - arrayIndex < Count)
+            {
+                throw new ArgumentException(nameof(array), "Число элементов в исходной коллекции больше доступного места от положения, " +
+                    $"заданного значением параметра {nameof(arrayIndex)}, до конца массива назначения {nameof(array)}.");
+            }
+
+            Array.Copy(items, 0, array, arrayIndex, Count);
         }
 
         public IEnumerator<T> GetEnumerator()
         {
+            int oldModCount = modCount;
+
             for (int i = 0; i < Count; ++i)
             {
+                if (oldModCount != modCount)
+                {
+                    throw new InvalidOperationException("Список был изменен.");
+                }
+
                 yield return items[i];
             }
         }
@@ -92,7 +129,7 @@ namespace ArrayList
         {
             for (int i = 0; i < Count; i++)
             {
-                if (items[i].Equals(item))
+                if (Equals(item, items[i]))
                 {
                     return i;
                 }
@@ -103,7 +140,7 @@ namespace ArrayList
 
         public void Insert(int index, T item)
         {
-            if (index < 0 || index >= Count)
+            if (index < 0 || index > Count)
             {
                 throw new IndexOutOfRangeException("Индекс выходит за границы списка.");
             }
@@ -113,14 +150,13 @@ namespace ArrayList
                 IncreaseCapacity();
             }
 
-            for (int i = Count; i > index; i--)
-            {
-                items[i] = items[i - 1];
-            }
+            Array.Copy(items, index, items, index + 1, Count - index);
 
             items[index] = item;
 
             Count++;
+
+            modCount++;
         }
 
         public bool Remove(T item)
@@ -130,6 +166,8 @@ namespace ArrayList
             if (index != -1)
             {
                 RemoveAt(index);
+
+                modCount++;
 
                 return true;
             }
@@ -144,12 +182,11 @@ namespace ArrayList
                 throw new IndexOutOfRangeException("Индекс выходит за границы списка.");
             }
 
-            for (int i = index; i < Count - 1; i++)
-            {
-                items[i] = items[i + 1];
-            }
+            Array.Copy(items, index + 1, items, index, Count - 1 - index);
 
             Count--;
+
+            modCount++;
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -159,9 +196,18 @@ namespace ArrayList
 
         private void IncreaseCapacity()
         {
+            Array.Resize(ref items, items.Length * 2);
+
+            Capacity = items.Length;
+        }
+
+        public void TrimExcess()
+        {
             T[] old = items;
-            items = new T[old.Length * 2];
-            Array.Copy(old, 0, items, 0, old.Length);
+            items = new T[Count];
+            Array.Copy(old, 0, items, 0, Count);
+
+            Capacity = items.Length;
         }
 
         public override string ToString()

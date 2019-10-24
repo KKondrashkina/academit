@@ -47,6 +47,14 @@ namespace ArrayList
             Console.WriteLine("Теперь список равен: {0}", numbers);
             Console.WriteLine();
 
+            Console.WriteLine("Вместимость списка = {0}", numbers.Capacity);
+            Console.WriteLine();
+
+            numbers.TrimExcess();
+
+            Console.WriteLine("Теперь вместимость списка = {0}", numbers.Capacity);
+            Console.WriteLine();
+
             int[] newNumbers = new int[51];
 
             newNumbers[0] = 1;
