@@ -119,7 +119,7 @@ namespace List
 
             for (int i = 0; i < Count; i++)
             {
-                if ((currentItem.Data == null && value == null) || currentItem.Data.Equals(value))
+                if (Equals(value, currentItem.Data))
                 {
                     previousItem.Next = previousItem.Next.Next;
                     Count--;
