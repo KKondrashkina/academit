@@ -82,9 +82,13 @@ namespace MyHashTable
                     $"заданного значением параметра {nameof(arrayIndex)}, до конца массива назначения {nameof(array)}.", nameof(array));
             }
 
-            foreach(T item in this)
+            int index = arrayIndex;
+
+            foreach (T item in this)
             {
-                array[arrayIndex++] = item;
+                array[index] = item;
+
+                index++;
             }
         }
 
@@ -137,18 +141,7 @@ namespace MyHashTable
 
         private int GetIndex(T item)
         {
-            int index;
-
-            if (item == null)
-            {
-                index = 0;
-            }
-            else
-            {
-                index = Math.Abs(item.GetHashCode() % items.Length);
-            }
-
-            return index;
+            return (item == null) ? 0 : Math.Abs(item.GetHashCode() % items.Length);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
