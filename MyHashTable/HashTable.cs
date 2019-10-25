@@ -12,9 +12,9 @@ namespace MyHashTable
 
         public HashTable(int size)
         {
-            if (size == 0)
+            if (size < 1)
             {
-                throw new ArgumentException(nameof(size), "Размер не может быть равен 0.");
+                throw new ArgumentException("Размер не может быть меньше единицы.", nameof(size));
             }
 
             items = new List<T>[size];
@@ -26,16 +26,7 @@ namespace MyHashTable
 
         public void Add(T item)
         {
-            int index;
-
-            if (item == null)
-            {
-                index = 0;
-            }
-            else
-            {
-                index = Math.Abs(item.GetHashCode() % items.Length);
-            }
+            int index = GetIndex(item);
 
             if (items[index] == null)
             {
@@ -63,16 +54,7 @@ namespace MyHashTable
 
         public bool Contains(T item)
         {
-            int index;
-
-            if (item == null)
-            {
-                index = 0;
-            }
-            else
-            {
-                index = Math.Abs(item.GetHashCode() % items.Length);
-            }
+            int index = GetIndex(item);
 
             if (items[index] == null)
             {
@@ -96,25 +78,13 @@ namespace MyHashTable
 
             if (array.Length - arrayIndex < Count)
             {
-                throw new ArgumentException(nameof(array), "Число элементов в исходной коллекции больше доступного места от положения, " +
-                    $"заданного значением параметра {nameof(arrayIndex)}, до конца массива назначения {nameof(array)}.");
+                throw new ArgumentException("Число элементов в исходной коллекции больше доступного места от положения, " +
+                    $"заданного значением параметра {nameof(arrayIndex)}, до конца массива назначения {nameof(array)}.", nameof(array));
             }
 
-            int index = 0;
-
-            foreach (List<T> row in items)
+            foreach(T item in this)
             {
-                if (row == null)
-                {
-                    continue;
-                }
-
-                foreach (T item in row)
-                {
-                    array[arrayIndex + index] = item;
-
-                    index++;
-                }
+                array[arrayIndex++] = item;
             }
         }
 
@@ -143,16 +113,7 @@ namespace MyHashTable
 
         public bool Remove(T item)
         {
-            int index;
-
-            if (item == null)
-            {
-                index = 0;
-            }
-            else
-            {
-                index = Math.Abs(item.GetHashCode() % items.Length);
-            }
+            int index = GetIndex(item);
 
             if (items[index] == null)
             {
@@ -172,6 +133,22 @@ namespace MyHashTable
             }
 
             return false;
+        }
+
+        private int GetIndex(T item)
+        {
+            int index;
+
+            if (item == null)
+            {
+                index = 0;
+            }
+            else
+            {
+                index = Math.Abs(item.GetHashCode() % items.Length);
+            }
+
+            return index;
         }
 
         IEnumerator IEnumerable.GetEnumerator()
