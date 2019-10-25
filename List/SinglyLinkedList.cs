@@ -107,8 +107,10 @@ namespace List
 
         public bool RemoveByValue(T value)
         {
-            ListItem<T> currentItem = head;
-            ListItem<T> previousItem = currentItem;
+            if (Count == 0)
+            {
+                return false;
+            }
 
             if (Equals(value, head.Data))
             {
@@ -116,6 +118,9 @@ namespace List
 
                 return true;
             }
+
+            ListItem<T> currentItem = head;
+            ListItem<T> previousItem = currentItem;
 
             for (int i = 0; i < Count; i++)
             {
