@@ -9,6 +9,7 @@ namespace ArrayList
     {
         private T[] items = new T[10];
         private int modCount = 0;
+        private int capacity = 0;
 
         public MyList()
         {
@@ -46,7 +47,34 @@ namespace ArrayList
             }
         }
 
-        public int Capacity { get; set; }
+        public int Capacity
+        {
+            get
+            {
+                return capacity;
+            }
+            set
+            {
+                if (value < 2)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value), "Вместимость не может быть меньше единицы.");
+                }
+
+                if (value < Count)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value), "Вместимость не может быть меньше количества элементов в списке.");
+                }
+
+                if (Count > 0)
+                {
+                    T[] old = items;
+                    items = new T[value];
+                    Array.Copy(old, 0, items, 0, Count);
+                }
+
+                capacity = value;
+            }
+        }
 
         public int Count { get; private set; }
 
@@ -75,12 +103,7 @@ namespace ArrayList
 
         public bool Contains(T item)
         {
-            if (IndexOf(item) == -1)
-            {
-                return false;
-            }
-
-            return true;
+            return IndexOf(item) == -1 ? false : true;
         }
 
         public void CopyTo(T[] array, int arrayIndex)
@@ -97,8 +120,8 @@ namespace ArrayList
 
             if (array.Length - arrayIndex < Count)
             {
-                throw new ArgumentException(nameof(array), "Число элементов в исходной коллекции больше доступного места от положения, " +
-                    $"заданного значением параметра {nameof(arrayIndex)}, до конца массива назначения {nameof(array)}.");
+                throw new ArgumentException("Число элементов в исходной коллекции больше доступного места от положения, " +
+                    $"заданного значением параметра {nameof(arrayIndex)}, до конца массива назначения {nameof(array)}.", nameof(array));
             }
 
             Array.Copy(items, 0, array, arrayIndex, Count);
@@ -161,8 +184,6 @@ namespace ArrayList
             {
                 RemoveAt(index);
 
-                modCount++;
-
                 return true;
             }
 
@@ -208,13 +229,20 @@ namespace ArrayList
         {
             StringBuilder sb = new StringBuilder();
 
+            sb.Append("[ ");
+
             for (int i = 0; i < Count; i++)
             {
                 sb.Append(items[i])
                   .Append(", ");
             }
 
-            sb.Remove(sb.Length - 2, 1);
+            if (Count != 0)
+            {
+                sb.Remove(sb.Length - 2, 1);
+            }
+
+            sb.Append(']');
 
             return sb.ToString();
         }
