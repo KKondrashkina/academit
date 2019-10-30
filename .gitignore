@@ -320,12 +320,3 @@ __pycache__/
 
 # OpenCover UI analysis results
 OpenCover/
-
-# Azure Stream Analytics local run output
-ASALocalRun/
-/Tree/App.config
-/Tree/MyTree.csproj
-/Tree/Program.cs
-/Tree/Properties/AssemblyInfo.cs
-/Tree/Tree.cs
-/Tree/TreeNode.cs
