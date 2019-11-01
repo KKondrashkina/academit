@@ -1,23 +1,30 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace ArrayList
 {
     class MyList<T> : IList<T>
     {
-        private T[] items = new T[10];
+        private T[] items;
         private int modCount = 0;
-        private int capacity = 0;
 
         public MyList()
         {
+            items = new T[10];
+
             Capacity = items.Length;
         }
 
         public MyList(int capacity)
         {
+            if (capacity < 1)
+            {
+                throw new ArgumentOutOfRangeException(nameof(capacity), "Вместимость не может быть меньше единицы.");
+            }
+
             Capacity = capacity;
             items = new T[capacity];
         }
@@ -51,28 +58,24 @@ namespace ArrayList
         {
             get
             {
-                return capacity;
+                return items.Length;
             }
             set
             {
-                if (value < 2)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(value), "Вместимость не может быть меньше единицы.");
-                }
-
                 if (value < Count)
                 {
                     throw new ArgumentOutOfRangeException(nameof(value), "Вместимость не может быть меньше количества элементов в списке.");
                 }
 
-                if (Count > 0)
+                if (value == items.Length)
                 {
-                    T[] old = items;
-                    items = new T[value];
-                    Array.Copy(old, 0, items, 0, Count);
+                    return;
                 }
 
-                capacity = value;
+                if (Count > 0)
+                {
+                    Array.Resize(ref items, value);
+                }
             }
         }
 
@@ -103,7 +106,7 @@ namespace ArrayList
 
         public bool Contains(T item)
         {
-            return IndexOf(item) == -1 ? false : true;
+            return items.Contains(item);
         }
 
         public void CopyTo(T[] array, int arrayIndex)
@@ -218,9 +221,7 @@ namespace ArrayList
 
         public void TrimExcess()
         {
-            T[] old = items;
-            items = new T[Count];
-            Array.Copy(old, 0, items, 0, Count);
+            Array.Resize(ref items, Count);
 
             Capacity = items.Length;
         }
