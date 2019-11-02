@@ -14,8 +14,6 @@ namespace ArrayList
         public MyList()
         {
             items = new T[10];
-
-            Capacity = items.Length;
         }
 
         public MyList(int capacity)
@@ -25,7 +23,6 @@ namespace ArrayList
                 throw new ArgumentOutOfRangeException(nameof(capacity), "Вместимость не может быть меньше единицы.");
             }
 
-            Capacity = capacity;
             items = new T[capacity];
         }
 
@@ -72,10 +69,7 @@ namespace ArrayList
                     return;
                 }
 
-                if (Count > 0)
-                {
-                    Array.Resize(ref items, value);
-                }
+                Array.Resize(ref items, value);
             }
         }
 
@@ -106,7 +100,7 @@ namespace ArrayList
 
         public bool Contains(T item)
         {
-            return items.Contains(item);
+            return IndexOf(item) != -1;
         }
 
         public void CopyTo(T[] array, int arrayIndex)
@@ -214,16 +208,12 @@ namespace ArrayList
 
         private void IncreaseCapacity()
         {
-            Array.Resize(ref items, items.Length * 2);
-
-            Capacity = items.Length;
+            Capacity = items.Length * 2;
         }
 
         public void TrimExcess()
         {
-            Array.Resize(ref items, Count);
-
-            Capacity = items.Length;
+            Capacity = Count;
         }
 
         public override string ToString()

@@ -3,9 +3,14 @@ using System.Collections.Generic;
 
 namespace MyTree
 {
-    class Tree<T> where T : IComparable<T>
+    class Tree<T>
     {
         private TreeNode<T> root;
+
+        public Tree()
+        {
+            
+        }
 
         public int Count { get; private set; }
 
@@ -61,12 +66,14 @@ namespace MyTree
 
             while (true)
             {
-                if (item.CompareTo(currentNode.Data) == 0)
+                int comparisonResult = item.CompareTo(currentNode.Data);
+
+                if (comparisonResult == 0)
                 {
                     return true;
                 }
 
-                if (item.CompareTo(currentNode.Data) < 0)
+                if (comparisonResult < 0)
                 {
                     if (currentNode.Left == null)
                     {
@@ -93,6 +100,8 @@ namespace MyTree
 
             while (true)
             {
+                int comparisonResult = item.CompareTo(currentNode.Data);
+
                 if (currentNode.Left != null && item.CompareTo(currentNode.Left.Data) == 0)
                 {
                     return currentNode;
@@ -103,7 +112,7 @@ namespace MyTree
                     return currentNode;
                 }
 
-                if (item.CompareTo(currentNode.Data) < 0)
+                if (comparisonResult < 0)
                 {
                     if (currentNode.Left == null)
                     {
@@ -209,13 +218,18 @@ namespace MyTree
             return true;
         }
 
-        private static void GetAroundInWidth(TreeNode<T> node)
+        private static void GetAroundInWidth(TreeNode<T> node, Action<T> action)
         {
+            if(node==null)
+            {
+                return;
+            }
+
             Queue<TreeNode<T>> queue = new Queue<TreeNode<T>>();
 
             do
             {
-                Console.WriteLine(node.Data);
+                action(node.Data);
 
                 if (node.Left != null)
                 {
@@ -231,11 +245,16 @@ namespace MyTree
             }
             while (queue.Count != 0);
 
-            Console.WriteLine(node.Data);
+            action(node.Data);
         }
 
-        private static void GetAroundInDepth(TreeNode<T> node)
+        private static void GetAroundInDepth(TreeNode<T> node, Action<T> action)
         {
+            if (node == null)
+            {
+                return;
+            }
+
             Stack<TreeNode<T>> stack = new Stack<TreeNode<T>>();
 
             while (node != null || stack.Count != 0)
@@ -247,7 +266,7 @@ namespace MyTree
 
                 while (node != null)
                 {
-                    Console.WriteLine(node.Data);
+                    action(node.Data);
 
                     if (node.Right != null)
                     {
@@ -259,34 +278,39 @@ namespace MyTree
             }
         }
 
-        private static void GetAroundInDepthRecursively(TreeNode<T> node)
+        private static void GetAroundInDepthRecursively(TreeNode<T> node, Action<T> action)
         {
-            Console.WriteLine(node.Data);
+            if (node == null)
+            {
+                return;
+            }
+
+            action(node.Data);
 
             if (node.Left != null)
             {
-                GetAroundInDepthRecursively(node.Left);
+                GetAroundInDepthRecursively(node.Left, action);
             }
 
             if (node.Right != null)
             {
-                GetAroundInDepthRecursively(node.Right);
+                GetAroundInDepthRecursively(node.Right, action);
             }
         }
 
-        public void GetAroundAndWrite()
+        public void GetAroundInWidth(Action<T> action)
         {
-            Console.WriteLine("Результат обхода в ширину:");
+            GetAroundInWidth(root,action);
+        }
 
-            GetAroundInWidth(root);
+        public void GetAroundInDepth(Action<T> action)
+        {
+            GetAroundInDepth(root, action);
+        }
 
-            Console.WriteLine("Результат обхода в глубину:");
-
-            GetAroundInDepth(root);
-
-            Console.WriteLine("Результат обхода в глубину рекурсивно:");
-
-            GetAroundInDepthRecursively(root);
+        public void GetAroundInDepthRecursively(Action<T> action)
+        {
+            GetAroundInDepthRecursively(root, action);
         }
     }
 }

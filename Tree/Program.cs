@@ -31,13 +31,24 @@ namespace MyTree
             tree.Add(136);
 
             Console.WriteLine("Количество элементов в дереве = {0}", tree.Count);
+            Console.WriteLine();
 
-            tree.GetAroundAndWrite();
+            Console.WriteLine("Результат обхода в ширину:");
+            tree.GetAroundInWidth(Console.WriteLine);
+            Console.WriteLine();
+
+            Console.WriteLine("Результат обхода в глубину:");
+            tree.GetAroundInDepth(Console.WriteLine);
+            Console.WriteLine();
+
+            Console.WriteLine("Результат обхода в глубину рекурсивно:");
+            tree.GetAroundInDepthRecursively(Console.WriteLine);
+            Console.WriteLine();
 
             int number1 = 250;
             int number2 = 66;
 
-            if(tree.Search(number1))
+            if (tree.Search(number1))
             {
                 Console.WriteLine("В дереве присутсвует элемент {0}", number1);
             }
@@ -55,7 +66,7 @@ namespace MyTree
                 Console.WriteLine("В дереве отсутсвует элемент {0}", number2);
             }
 
-            if(tree.Remove(number1))
+            if (tree.Remove(number1))
             {
                 Console.WriteLine("Элемент {0} был удален", number1);
             }
@@ -66,7 +77,7 @@ namespace MyTree
 
             int number3 = 123;
 
-            if(tree.Remove(number3))
+            if (tree.Remove(number3))
             {
                 Console.WriteLine("Элемент {0} был удален", number3);
             }
@@ -87,8 +98,10 @@ namespace MyTree
             }
 
             Console.WriteLine("Количество элементов в дереве = {0}", tree.Count);
+            Console.WriteLine();
 
-            tree.GetAroundAndWrite();
+            Console.WriteLine("Результат обхода в ширину:");
+            tree.GetAroundInWidth(Console.WriteLine);
 
             Console.ReadKey();
         }
