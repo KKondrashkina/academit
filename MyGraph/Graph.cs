@@ -6,7 +6,6 @@ namespace MyGraph
     class Graph
     {
         private int[,] graph;
-        private bool[] visited;
 
         public Graph(int[,] graph)
         {
@@ -20,41 +19,61 @@ namespace MyGraph
 
         public void GetAroundInWidth(Action<int> action)
         {
-            visited = new bool[graph.GetLength(0)];
-
             if (graph == null)
             {
                 return;
             }
 
+            bool[] visited = new bool[graph.GetLength(0)];
+
             Queue<int> queue = new Queue<int>();
 
-            queue.Enqueue(0);
+            int notVisitedIndex = 0;
+            bool isReturn = false;
 
-            visited[0] = true;
-
-            int element;
-
-            while (queue.Count != 0)
+            while (!isReturn)
             {
-                element = queue.Dequeue();
-
-                action(element);
-
-                for (int i = 0; i < visited.Length; i++)
+                for (int i = notVisitedIndex; i < visited.Length; i++)
                 {
-                    if (i == element)
+                    if (!visited[i])
                     {
-                        continue;
+                        notVisitedIndex = i;
+                        isReturn = false;
+
+                        break;
                     }
 
-                    if (graph[element, i] == 1)
-                    {
-                        if (!visited[i])
-                        {
-                            visited[i] = true;
+                    isReturn = true;
+                }
 
-                            queue.Enqueue(i);
+                queue.Enqueue(notVisitedIndex);
+
+                visited[notVisitedIndex] = true;
+
+                if (!isReturn)
+                {
+                    while (queue.Count != 0)
+                    {
+                        int element = queue.Dequeue();
+
+                        action(element);
+
+                        for (int i = 0; i < visited.Length; i++)
+                        {
+                            if (i == element)
+                            {
+                                continue;
+                            }
+
+                            if (graph[element, i] == 1)
+                            {
+                                if (!visited[i])
+                                {
+                                    visited[i] = true;
+
+                                    queue.Enqueue(i);
+                                }
+                            }
                         }
                     }
                 }
@@ -63,45 +82,123 @@ namespace MyGraph
 
         public void GetAroundInDepth(Action<int> action)
         {
-            visited = new bool[graph.GetLength(0)];
-
             if (graph == null)
             {
                 return;
             }
 
+            bool[] visited = new bool[graph.GetLength(0)];
+
             Stack<int> stack = new Stack<int>();
 
-            stack.Push(0);
+            int notVisitedIndex = 0;
+            bool isReturn = false;
 
-            visited[0] = true;
-
-            int element;
-
-            while (stack.Count != 0)
+            while (!isReturn)
             {
-                element = stack.Pop();
-
-                action(element);
-
-                for (int i = visited.Length - 1; i >= 0; i--)
+                for (int i = notVisitedIndex; i < visited.Length; i++)
                 {
-                    if (i == element)
+                    if (!visited[i])
                     {
-                        continue;
+                        notVisitedIndex = i;
+                        isReturn = false;
+
+                        break;
                     }
 
-                    if (graph[element, i] == 1)
-                    {
-                        if (!visited[i])
-                        {
-                            visited[i] = true;
+                    isReturn = true;
+                }
 
-                            stack.Push(i);
+                stack.Push(notVisitedIndex);
+
+                visited[notVisitedIndex] = true;
+
+                if (!isReturn)
+                {
+                    while (stack.Count != 0)
+                    {
+                        int element = stack.Pop();
+
+                        action(element);
+
+                        for (int i = visited.Length - 1; i >= 0; i--)
+                        {
+                            if (i == element)
+                            {
+                                continue;
+                            }
+
+                            if (graph[element, i] == 1)
+                            {
+                                if (!visited[i])
+                                {
+                                    visited[i] = true;
+
+                                    stack.Push(i);
+                                }
+                            }
                         }
                     }
                 }
             }
+        }
+
+        public void GetAroundInDepthRecursively(Action<int> action)
+        {
+            if (graph == null)
+            {
+                return;
+            }
+
+            int notVisitedIndex = 0;
+            bool isReturn = false;
+            bool[] visited = new bool[graph.GetLength(0)];
+
+            while (!isReturn)
+            {
+                visited = GetAroundInDepthRecursively(action, visited, notVisitedIndex);
+
+                for (int i = notVisitedIndex; i < visited.Length; i++)
+                {
+                    if (!visited[i])
+                    {
+                        notVisitedIndex = i;
+                        isReturn = false;
+
+                        break;
+                    }
+
+                    isReturn = true;
+                }
+            }
+        }
+
+        private bool[] GetAroundInDepthRecursively(Action<int> action, bool[] visited, int element)
+        {
+            bool[] newVisited = visited;
+            newVisited[element] = true;
+
+            action(element);
+
+            for (int i = 0; i < graph.GetLength(0); i++)
+            {
+                if (i == element)
+                {
+                    continue;
+                }
+
+                if (graph[element, i] == 1)
+                {
+                    if (!visited[i])
+                    {
+                        newVisited[i] = true;
+
+                        GetAroundInDepthRecursively(action, newVisited, i);
+                    }
+                }
+            }
+
+            return newVisited;
         }
     }
 }
