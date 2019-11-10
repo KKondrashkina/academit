@@ -146,6 +146,11 @@ namespace MyTree
 
         public bool Remove(T item)
         {
+            if (Count == 0)
+            {
+                return false;
+            }
+
             TreeNode<T> parent = SearchParent(item);
             TreeNode<T> currentNode;
             bool isLeft = false;
