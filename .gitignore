@@ -317,11 +317,3 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
-
-# OpenCover UI analysis results
-OpenCover/
-/Lambdas/Lambdas.csproj
-/Lambdas/App.config
-/Lambdas/Person.cs
-/Lambdas/Program.cs
-/Lambdas/Properties/AssemblyInfo.cs
