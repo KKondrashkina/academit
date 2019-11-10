@@ -6,7 +6,7 @@ namespace MyTree
     {
         static void Main(string[] args)
         {
-            Tree<int> tree = new Tree<int>();
+           Tree<int> tree = new Tree<int>();
 
             tree.Add(149);
             tree.Add(120);

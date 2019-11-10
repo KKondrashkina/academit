@@ -37,9 +37,7 @@ namespace MyTree
 
             while (true)
             {
-                IComparable<T> convertedItem = (IComparable<T>)item;
-
-                int comparisonResult = (comparer != null) ? comparer.Compare(item, currentNode.Data) : convertedItem.CompareTo(currentNode.Data);
+                int comparisonResult = GetComparisonResult(item, currentNode);
 
                 if (comparisonResult < 0)
                 {
@@ -72,13 +70,16 @@ namespace MyTree
 
         public bool Search(T item)
         {
+            if (Count == 0)
+            {
+                return false;
+            }
+
             TreeNode<T> currentNode = root;
 
             while (true)
             {
-                IComparable<T> convertedItem = (IComparable<T>)item;
-
-                int comparisonResult = (comparer != null) ? comparer.Compare(item, currentNode.Data) : convertedItem.CompareTo(currentNode.Data);
+                int comparisonResult = GetComparisonResult(item, currentNode);
 
                 if (comparisonResult == 0)
                 {
@@ -108,55 +109,36 @@ namespace MyTree
 
         public TreeNode<T> SearchParent(T item)
         {
+            if (Count == 0)
+            {
+                return null;
+            }
+
             TreeNode<T> currentNode = root;
+            TreeNode<T> parent = null;
 
             while (true)
             {
-                IComparable<T> convertedItem = (IComparable<T>)item;
-
-                int comparisonResult = (comparer != null) ? comparer.Compare(item, currentNode.Data) : convertedItem.CompareTo(currentNode.Data);
-                int comparsionWithLeftResult = 0;
-
-                if (currentNode.Left != null)
+                if (currentNode == null)
                 {
-                    comparsionWithLeftResult = (comparer != null) ? comparer.Compare(item, currentNode.Left.Data) :
-                        convertedItem.CompareTo(currentNode.Left.Data);
+                    return null;
                 }
 
-                int comparsionWithRightResult = 0;
+                int comparisonResult = GetComparisonResult(item, currentNode);
 
-                if (currentNode.Right != null)
+                if (comparisonResult == 0)
                 {
-                    comparsionWithRightResult = (comparer != null) ? comparer.Compare(item, currentNode.Right.Data) :
-                    convertedItem.CompareTo(currentNode.Right.Data);
+                    return parent;
                 }
 
-                if (currentNode.Left != null && comparsionWithLeftResult == 0)
-                {
-                    return currentNode;
-                }
-
-                if (currentNode.Right != null && comparsionWithRightResult == 0)
-                {
-                    return currentNode;
-                }
+                parent = currentNode;
 
                 if (comparisonResult < 0)
                 {
-                    if (currentNode.Left == null)
-                    {
-                        return null;
-                    }
-
                     currentNode = currentNode.Left;
                 }
                 else
                 {
-                    if (currentNode.Right == null)
-                    {
-                        return null;
-                    }
-
                     currentNode = currentNode.Right;
                 }
             }
@@ -168,20 +150,24 @@ namespace MyTree
             TreeNode<T> currentNode;
             bool isLeft = false;
 
-            IComparable<T> convertedItem = (IComparable<T>)item;
-
-            int comparisonResult = (comparer != null) ? comparer.Compare(item, parent.Left.Data) : convertedItem.CompareTo(parent.Left.Data);
-
-            if (parent.Left != null && comparisonResult == 0)
+            if (parent == null)
             {
-                currentNode = parent.Left;
-                isLeft = true;
+                currentNode = root;
             }
             else
             {
-                currentNode = parent.Right;
-            }
+                int comparisonResult = GetComparisonResult(item, parent.Left);
 
+                if (parent.Left != null && comparisonResult == 0)
+                {
+                    currentNode = parent.Left;
+                    isLeft = true;
+                }
+                else
+                {
+                    currentNode = parent.Right;
+                }
+            }
 
             if (currentNode == null)
             {
@@ -190,35 +176,56 @@ namespace MyTree
 
             if (currentNode.Left == null && currentNode.Right == null)
             {
-                if (isLeft)
+                if (currentNode == root)
                 {
-                    parent.Left = null;
+                    root = null;
                 }
                 else
                 {
-                    parent.Right = null;
+                    if (isLeft)
+                    {
+                        parent.Left = null;
+                    }
+                    else
+                    {
+                        parent.Right = null;
+                    }
                 }
             }
             else if (currentNode.Left == null && currentNode.Right != null)
             {
-                if (isLeft)
+                if (currentNode == root)
                 {
-                    parent.Left = currentNode.Right;
+                    root = currentNode.Right;
                 }
                 else
                 {
-                    parent.Right = currentNode.Right;
+                    if (isLeft)
+                    {
+                        parent.Left = currentNode.Right;
+                    }
+                    else
+                    {
+                        parent.Right = currentNode.Right;
+                    }
                 }
             }
             else if (currentNode.Left != null && currentNode.Right == null)
             {
-                if (isLeft)
+                if (currentNode == root)
                 {
-                    parent.Left = currentNode.Left;
+                    root = currentNode.Left;
                 }
                 else
                 {
-                    parent.Right = currentNode.Left;
+                    if (isLeft)
+                    {
+                        parent.Left = currentNode.Left;
+                    }
+                    else
+                    {
+                        parent.Right = currentNode.Left;
+                    }
                 }
             }
             else
@@ -251,17 +258,21 @@ namespace MyTree
             return true;
         }
 
-        private static void GetAroundInWidth(TreeNode<T> node, Action<T> action)
+        public void GetAroundInWidth(Action<T> action)
         {
-            if (node == null)
+            if (Count == 0)
             {
                 return;
             }
 
             Queue<TreeNode<T>> queue = new Queue<TreeNode<T>>();
 
-            do
+            queue.Enqueue(root);
+
+            while (queue.Count != 0)
             {
+                TreeNode<T> node = queue.Dequeue();
+
                 action(node.Data);
 
                 if (node.Left != null)
@@ -273,45 +284,39 @@ namespace MyTree
                 {
                     queue.Enqueue(node.Right);
                 }
-
-                node = queue.Dequeue();
             }
-            while (queue.Count != 0);
-
-            action(node.Data);
         }
 
-        private static void GetAroundInDepth(TreeNode<T> node, Action<T> action)
+        public void GetAroundInDepth(Action<T> action)
         {
-            if (node == null)
+            if (Count == 0)
             {
                 return;
             }
 
             Stack<TreeNode<T>> stack = new Stack<TreeNode<T>>();
 
-            while (node != null || stack.Count != 0)
+            stack.Push(root);
+
+            while (stack.Count != 0)
             {
-                if (stack.Count != 0)
+                TreeNode<T> node = stack.Pop();
+
+                action(node.Data);
+
+                if (node.Right != null)
                 {
-                    node = stack.Pop();
+                    stack.Push(node.Right);
                 }
 
-                while (node != null)
+                if (node.Left != null)
                 {
-                    action(node.Data);
-
-                    if (node.Right != null)
-                    {
-                        stack.Push(node.Right);
-                    }
-
-                    node = node.Left;
+                    stack.Push(node.Left);
                 }
             }
         }
 
-        private static void GetAroundInDepthRecursively(TreeNode<T> node, Action<T> action)
+        public void GetAroundInDepthRecursively(TreeNode<T> node, Action<T> action)
         {
             if (node == null)
             {
@@ -331,19 +336,31 @@ namespace MyTree
             }
         }
 
-        public void GetAroundInWidth(Action<T> action)
-        {
-            GetAroundInWidth(root, action);
-        }
-
-        public void GetAroundInDepth(Action<T> action)
-        {
-            GetAroundInDepth(root, action);
-        }
-
         public void GetAroundInDepthRecursively(Action<T> action)
         {
             GetAroundInDepthRecursively(root, action);
+        }
+
+        private int GetComparisonResult(T item, TreeNode<T> node)
+        {
+            if (item == null)
+            {
+                if (node.Data == null)
+                {
+                    return 0;
+                }
+
+                return -1;
+            }
+
+            if (node.Data == null)
+            {
+                return 1;
+            }
+
+            IComparable<T> convertedItem = (IComparable<T>)item;
+
+            return (comparer != null) ? comparer.Compare(item, node.Data) : convertedItem.CompareTo(node.Data);
         }
     }
 }
