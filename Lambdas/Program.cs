@@ -70,16 +70,9 @@ namespace Lambdas
 
             Console.WriteLine();
 
-            foreach (double root in GetSquareRoot())
+            foreach (double root in GetSquareRoots().Take(rootsCount))
             {
-                if (rootsCount == 0)
-                {
-                    break;
-                }
-
                 Console.WriteLine(root);
-
-                rootsCount--;
             }
 
             Console.WriteLine();
@@ -100,22 +93,15 @@ namespace Lambdas
 
             Console.WriteLine();
 
-            foreach (int number in GetFibonacciNumber())
+            foreach (int number in GetFibonacciNumbers().Take(fibonacciNumbersCount))
             {
-                if (fibonacciNumbersCount == 0)
-                {
-                    break;
-                }
-
                 Console.WriteLine(number);
-
-                fibonacciNumbersCount--;
             }
 
             Console.ReadKey();
         }
 
-        public static IEnumerable GetSquareRoot()
+        public static IEnumerable<double> GetSquareRoots()
         {
             int number = 0;
 
@@ -127,7 +113,7 @@ namespace Lambdas
             }
         }
 
-        public static IEnumerable GetFibonacciNumber()
+        public static IEnumerable<int> GetFibonacciNumbers()
         {
             yield return 0;
             yield return 1;

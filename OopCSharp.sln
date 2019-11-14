@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGraph", "MyGraph\MyGraph.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lambdas", "Lambdas\Lambdas.csproj", "{4126DA01-26B5-478F-AAF7-6ED7249766E8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemperatureConverter", "TemperatureConverter\TemperatureConverter.csproj", "{76CB2442-8C42-43AC-AFE4-538A1C6E5EA1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{4126DA01-26B5-478F-AAF7-6ED7249766E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4126DA01-26B5-478F-AAF7-6ED7249766E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4126DA01-26B5-478F-AAF7-6ED7249766E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76CB2442-8C42-43AC-AFE4-538A1C6E5EA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76CB2442-8C42-43AC-AFE4-538A1C6E5EA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76CB2442-8C42-43AC-AFE4-538A1C6E5EA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76CB2442-8C42-43AC-AFE4-538A1C6E5EA1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
