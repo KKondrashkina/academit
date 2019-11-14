@@ -24,55 +24,41 @@ namespace MyGraph
                 return;
             }
 
-            bool[] visited = new bool[graph.GetLength(0)];
-
+            int length = graph.GetLength(0);
+            bool[] visited = new bool[length];
             Queue<int> queue = new Queue<int>();
 
-            int notVisitedIndex = 0;
-            bool isReturn = false;
-
-            while (!isReturn)
+            for (int i = 0; i < length; i++)
             {
-                for (int i = notVisitedIndex; i < visited.Length; i++)
+                if (visited[i])
                 {
-                    if (!visited[i])
-                    {
-                        notVisitedIndex = i;
-                        isReturn = false;
-
-                        break;
-                    }
-
-                    isReturn = true;
+                    continue;
                 }
 
-                queue.Enqueue(notVisitedIndex);
+                queue.Enqueue(i);
 
-                visited[notVisitedIndex] = true;
+                visited[i] = true;
 
-                if (!isReturn)
+                while (queue.Count != 0)
                 {
-                    while (queue.Count != 0)
+                    int element = queue.Dequeue();
+
+                    action(element);
+
+                    for (int j = 0; j < length; j++)
                     {
-                        int element = queue.Dequeue();
-
-                        action(element);
-
-                        for (int i = 0; i < visited.Length; i++)
+                        if (j == element)
                         {
-                            if (i == element)
-                            {
-                                continue;
-                            }
+                            continue;
+                        }
 
-                            if (graph[element, i] == 1)
+                        if (graph[element, j] == 1)
+                        {
+                            if (!visited[j])
                             {
-                                if (!visited[i])
-                                {
-                                    visited[i] = true;
+                                visited[j] = true;
 
-                                    queue.Enqueue(i);
-                                }
+                                queue.Enqueue(j);
                             }
                         }
                     }
@@ -87,55 +73,41 @@ namespace MyGraph
                 return;
             }
 
-            bool[] visited = new bool[graph.GetLength(0)];
-
+            int length = graph.GetLength(0);
+            bool[] visited = new bool[length];
             Stack<int> stack = new Stack<int>();
 
-            int notVisitedIndex = 0;
-            bool isReturn = false;
-
-            while (!isReturn)
+            for (int i = 0; i < length; i++)
             {
-                for (int i = notVisitedIndex; i < visited.Length; i++)
+                if (visited[i])
                 {
-                    if (!visited[i])
-                    {
-                        notVisitedIndex = i;
-                        isReturn = false;
-
-                        break;
-                    }
-
-                    isReturn = true;
+                    continue;
                 }
 
-                stack.Push(notVisitedIndex);
+                stack.Push(i);
 
-                visited[notVisitedIndex] = true;
+                visited[i] = true;
 
-                if (!isReturn)
+                while (stack.Count != 0)
                 {
-                    while (stack.Count != 0)
+                    int element = stack.Pop();
+
+                    action(element);
+
+                    for (int j = length - 1; j >= 0; j--)
                     {
-                        int element = stack.Pop();
-
-                        action(element);
-
-                        for (int i = visited.Length - 1; i >= 0; i--)
+                        if (j == element)
                         {
-                            if (i == element)
-                            {
-                                continue;
-                            }
+                            continue;
+                        }
 
-                            if (graph[element, i] == 1)
+                        if (graph[element, j] == 1)
+                        {
+                            if (!visited[j])
                             {
-                                if (!visited[i])
-                                {
-                                    visited[i] = true;
+                                visited[j] = true;
 
-                                    stack.Push(i);
-                                }
+                                stack.Push(j);
                             }
                         }
                     }
@@ -150,26 +122,16 @@ namespace MyGraph
                 return;
             }
 
-            int notVisitedIndex = 0;
-            bool isReturn = false;
             bool[] visited = new bool[graph.GetLength(0)];
 
-            while (!isReturn)
+            for (int i = 0; i < graph.GetLength(0); i++)
             {
-                visited = GetAroundInDepthRecursively(action, visited, notVisitedIndex);
-
-                for (int i = notVisitedIndex; i < visited.Length; i++)
+                if (visited[i])
                 {
-                    if (!visited[i])
-                    {
-                        notVisitedIndex = i;
-                        isReturn = false;
-
-                        break;
-                    }
-
-                    isReturn = true;
+                    continue;
                 }
+
+                visited = GetAroundInDepthRecursively(action, visited, i);
             }
         }
 
