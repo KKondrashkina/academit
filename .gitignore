@@ -311,20 +311,3 @@ __pycache__/
 
 # Telerik's JustMock configuration file
 *.jmconfig
-
-# BizTalk build output
-*.btp.cs
-*.btm.cs
-*.odx.cs
-*.xsd.cs
-/TemperatureConverter/Form1.cs
-/TemperatureConverter/Form1.resx
-/TemperatureConverter/App.config
-/TemperatureConverter/Form1.Designer.cs
-/TemperatureConverter/Program.cs
-/TemperatureConverter/Properties/AssemblyInfo.cs
-/TemperatureConverter/TemperatureConverter.csproj
-/TemperatureConverter/Properties/Settings.settings
-/TemperatureConverter/Properties/Settings.Designer.cs
-/TemperatureConverter/Properties/Resources.resx
-/TemperatureConverter/Properties/Resources.Designer.cs
