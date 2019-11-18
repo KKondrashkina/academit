@@ -137,8 +137,7 @@ namespace MyGraph
 
         private void GetAroundInDepthRecursively(Action<int> action, bool[] visited, int element)
         {
-            bool[] newVisited = visited;
-            newVisited[element] = true;
+            visited[element] = true;
 
             action(element);
 
@@ -153,9 +152,9 @@ namespace MyGraph
                 {
                     if (!visited[i])
                     {
-                        newVisited[i] = true;
+                        visited[i] = true;
 
-                        GetAroundInDepthRecursively(action, newVisited, i);
+                        GetAroundInDepthRecursively(action, visited, i);
                     }
                 }
             }

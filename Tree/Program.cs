@@ -6,7 +6,7 @@ namespace MyTree
     {
         static void Main(string[] args)
         {
-           Tree<int> tree = new Tree<int>();
+            Tree<int> tree = new Tree<int>();
 
             tree.Add(149);
             tree.Add(120);
@@ -48,7 +48,7 @@ namespace MyTree
             int number1 = 250;
             int number2 = 66;
 
-            if (tree.Search(number1))
+            if (tree.Contains(number1))
             {
                 Console.WriteLine("В дереве присутсвует элемент {0}", number1);
             }
@@ -57,7 +57,7 @@ namespace MyTree
                 Console.WriteLine("В дереве отсутсвует элемент {0}", number1);
             }
 
-            if (tree.Search(number2))
+            if (tree.Contains(number2))
             {
                 Console.WriteLine("В дереве присутсвует элемент {0}", number2);
             }

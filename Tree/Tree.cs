@@ -68,7 +68,7 @@ namespace MyTree
             }
         }
 
-        public bool Search(T item)
+        public bool Contains(T item)
         {
             if (Count == 0)
             {
