@@ -131,11 +131,11 @@ namespace MyGraph
                     continue;
                 }
 
-                visited = GetAroundInDepthRecursively(action, visited, i);
+                GetAroundInDepthRecursively(action, visited, i);
             }
         }
 
-        private bool[] GetAroundInDepthRecursively(Action<int> action, bool[] visited, int element)
+        private void GetAroundInDepthRecursively(Action<int> action, bool[] visited, int element)
         {
             bool[] newVisited = visited;
             newVisited[element] = true;
@@ -159,8 +159,6 @@ namespace MyGraph
                     }
                 }
             }
-
-            return newVisited;
         }
     }
 }
