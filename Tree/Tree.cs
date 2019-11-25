@@ -37,7 +37,7 @@ namespace MyTree
 
             while (true)
             {
-                int comparisonResult = GetComparisonResult(item, currentNode.Data);
+                int comparisonResult = Compare(item, currentNode.Data);
 
                 if (comparisonResult < 0)
                 {
@@ -79,7 +79,7 @@ namespace MyTree
 
             while (true)
             {
-                int comparisonResult = GetComparisonResult(item, currentNode.Data);
+                int comparisonResult = Compare(item, currentNode.Data);
 
                 if (comparisonResult == 0)
                 {
@@ -124,7 +124,7 @@ namespace MyTree
                     return null;
                 }
 
-                int comparisonResult = GetComparisonResult(item, currentNode.Data);
+                int comparisonResult = Compare(item, currentNode.Data);
 
                 if (comparisonResult == 0)
                 {
@@ -161,7 +161,7 @@ namespace MyTree
             }
             else
             {
-                int comparisonResult = GetComparisonResult(item, parent.Left.Data);
+                int comparisonResult = Compare(item, parent.Left.Data);
 
                 if (parent.Left != null && comparisonResult == 0)
                 {
@@ -355,11 +355,16 @@ namespace MyTree
             GetAroundInDepthRecursively(root, action);
         }
 
-        private int GetComparisonResult(T item, T nodeData)
+        private int Compare(T item1, T item2)
         {
-            if (item == null && comparer == null)
+            if (comparer != null)
             {
-                if (nodeData == null)
+                return comparer.Compare(item1, item2);
+            }
+
+            if (item1 == null && comparer == null)
+            {
+                if (item2 == null)
                 {
                     return 0;
                 }
@@ -367,12 +372,12 @@ namespace MyTree
                 return -1;
             }
 
-            if (nodeData == null && comparer == null)
+            if (item2 == null && comparer == null)
             {
                 return 1;
             }
 
-            return (comparer != null) ? comparer.Compare(item, nodeData) : ((IComparable<T>)item).CompareTo(nodeData);
+            return ((IComparable<T>)item1).CompareTo(item2);
         }
     }
 }

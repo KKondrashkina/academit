@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace TemperatureConverter
 {
@@ -13,6 +10,11 @@ namespace TemperatureConverter
             if (IsNumber(text))
             {
                 return GetValue(text, unitOfMeasurement1, unitOfMeasurement2);
+            }
+
+            if (text != "")
+            {
+                MessageBox.Show("Ошибка! Введено не число.");
             }
 
             return "";
