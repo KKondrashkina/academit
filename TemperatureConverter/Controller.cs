@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using TemperatureConverter.TemperatureUnit;
 
 namespace TemperatureConverter
 {
@@ -22,6 +23,9 @@ namespace TemperatureConverter
 
         private static string GetValue(string text, string unitOfMeasurement1, string unitOfMeasurement2)
         {
+            Kelvin kelvin = new Kelvin();
+            Fahrenheit fahrenheit = new Fahrenheit();
+
             if (unitOfMeasurement1 == "Celsius degrees")
             {
                 if (unitOfMeasurement2 == "Celsius degrees")
@@ -30,11 +34,11 @@ namespace TemperatureConverter
                 }
                 else if (unitOfMeasurement2 == "Kelvins")
                 {
-                    return Convert.ToString(Model.ConvertCelsiusToKelvin(Convert.ToDouble(text)));
+                    return Convert.ToString(kelvin.ConvertFromCelsius(Convert.ToDouble(text)));
                 }
                 else if (unitOfMeasurement2 == "Fahrenheit degrees")
                 {
-                    return Convert.ToString(Model.ConvertCelsiusToFahrenheit(Convert.ToDouble(text)));
+                    return Convert.ToString(fahrenheit.ConvertFromCelsius(Convert.ToDouble(text)));
                 }
             }
             else if (unitOfMeasurement1 == "Kelvins")
@@ -45,11 +49,11 @@ namespace TemperatureConverter
                 }
                 else if (unitOfMeasurement2 == "Celsius degrees")
                 {
-                    return Convert.ToString(Model.ConvertKelvinToCelsius(Convert.ToDouble(text)));
+                    return Convert.ToString(kelvin.ConvertToCelsius(Convert.ToDouble(text)));
                 }
                 else if (unitOfMeasurement2 == "Fahrenheit degrees")
                 {
-                    return Convert.ToString(Model.ConvertKelvinToFahrenheit(Convert.ToDouble(text)));
+                    return Convert.ToString(fahrenheit.ConvertFromCelsius(kelvin.ConvertToCelsius(Convert.ToDouble(text))));
                 }
             }
             else if (unitOfMeasurement1 == "Fahrenheit degrees")
@@ -60,11 +64,11 @@ namespace TemperatureConverter
                 }
                 else if (unitOfMeasurement2 == "Celsius degrees")
                 {
-                    return Convert.ToString(Model.ConvertFahrenheitToCelsius(Convert.ToDouble(text)));
+                    return Convert.ToString(fahrenheit.ConvertToCelsius(Convert.ToDouble(text)));
                 }
                 else if (unitOfMeasurement2 == "Kelvins")
                 {
-                    return Convert.ToString(Model.ConvertFahrenheitToKelvin(Convert.ToDouble(text)));
+                    return Convert.ToString(kelvin.ConvertFromCelsius(fahrenheit.ConvertToCelsius(Convert.ToDouble(text))));
                 }
             }
 
