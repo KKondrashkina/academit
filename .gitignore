@@ -308,13 +308,3 @@ __pycache__/
 
 # Tabs Studio
 *.tss
-
-# Telerik's JustMock configuration file
-*.jmconfig
-/TemperatureConverter/TemperatureUnit/ITemperatureUnit.cs
-/TemperatureConverter/TemperatureUnit/Fahrenheit.cs
-/TemperatureConverter/TemperatureUnit/Kelvin.cs
-/TemperatureConverter/TemperatureUnit/Celsius.cs
-/TemperatureConverter/MainForm.cs
-/TemperatureConverter/MainForm.resx
-/TemperatureConverter/MainForm.Designer.cs
