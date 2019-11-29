@@ -161,9 +161,7 @@ namespace MyTree
             }
             else
             {
-                int comparisonResult = Compare(item, parent.Left.Data);
-
-                if (parent.Left != null && comparisonResult == 0)
+                if (parent.Left != null && Compare(item, parent.Left.Data) == 0)
                 {
                     currentNode = parent.Left;
                     isLeft = true;
@@ -249,7 +247,10 @@ namespace MyTree
                     newParent.Left = newCurrentNode.Right;
 
                     newCurrentNode.Right = null;
-                    newCurrentNode = newParent.Left;
+                }
+                else
+                {
+                    newParent.Left = null;
                 }
 
                 newCurrentNode.Left = currentNode.Left;
@@ -262,9 +263,7 @@ namespace MyTree
                 else
                 {
                     parent.Right = newCurrentNode;
-                }
-
-                newParent.Left = null;
+                }                
             }
 
             Count--;
@@ -362,7 +361,7 @@ namespace MyTree
                 return comparer.Compare(item1, item2);
             }
 
-            if (item1 == null && comparer == null)
+            if (item1 == null)
             {
                 if (item2 == null)
                 {
@@ -372,7 +371,7 @@ namespace MyTree
                 return -1;
             }
 
-            if (item2 == null && comparer == null)
+            if (item2 == null)
             {
                 return 1;
             }
