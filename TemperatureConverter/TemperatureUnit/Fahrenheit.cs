@@ -2,9 +2,17 @@
 {
     class Fahrenheit : ITemperatureUnit
     {
+        public string Name
+        {
+            get
+            {
+                return "Fahrenheit degrees";
+            }
+        }
+
         public double ConvertToCelsius(double value)
         {
-            return (value - 32) * 9 / 5;
+            return (value - 32) * 5 / 9;
         }
 
         public double ConvertFromCelsius(double value)

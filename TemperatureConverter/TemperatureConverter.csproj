@@ -55,6 +55,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TemperatureUnit\Celsius.cs" />
     <Compile Include="TemperatureUnit\Fahrenheit.cs" />
     <Compile Include="TemperatureUnit\ITemperatureUnit.cs" />
     <Compile Include="TemperatureUnit\Kelvin.cs" />

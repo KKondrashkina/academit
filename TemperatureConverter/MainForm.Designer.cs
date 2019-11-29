@@ -33,10 +33,10 @@
             this.UOM2 = new System.Windows.Forms.ComboBox();
             this.Result = new System.Windows.Forms.TextBox();
             this.Value = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.enterValue = new System.Windows.Forms.Label();
+            this.resultLabel = new System.Windows.Forms.Label();
+            this.uomFrom = new System.Windows.Forms.Label();
+            this.uomTo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // UOM1
@@ -84,51 +84,51 @@
             this.Value.TabIndex = 4;
             this.Value.TextChanged += new System.EventHandler(this.Value_TextChanged);
             // 
-            // label1
+            // enterValue
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Enter value:";
+            this.enterValue.AutoSize = true;
+            this.enterValue.Location = new System.Drawing.Point(25, 35);
+            this.enterValue.Name = "enterValue";
+            this.enterValue.Size = new System.Drawing.Size(64, 13);
+            this.enterValue.TabIndex = 5;
+            this.enterValue.Text = "Enter value:";
             // 
-            // label2
+            // resultLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(25, 85);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Result:";
+            this.resultLabel.AutoSize = true;
+            this.resultLabel.Location = new System.Drawing.Point(25, 85);
+            this.resultLabel.Name = "resultLabel";
+            this.resultLabel.Size = new System.Drawing.Size(40, 13);
+            this.resultLabel.TabIndex = 6;
+            this.resultLabel.Text = "Result:";
             // 
-            // label5
+            // uomFrom
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(175, 35);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(107, 13);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Unit of measurement:";
+            this.uomFrom.AutoSize = true;
+            this.uomFrom.Location = new System.Drawing.Point(175, 35);
+            this.uomFrom.Name = "uomFrom";
+            this.uomFrom.Size = new System.Drawing.Size(107, 13);
+            this.uomFrom.TabIndex = 9;
+            this.uomFrom.Text = "Unit of measurement:";
             // 
-            // label6
+            // uomTo
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(175, 85);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(107, 13);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Unit of measurement:";
+            this.uomTo.AutoSize = true;
+            this.uomTo.Location = new System.Drawing.Point(175, 85);
+            this.uomTo.Name = "uomTo";
+            this.uomTo.Size = new System.Drawing.Size(107, 13);
+            this.uomTo.TabIndex = 10;
+            this.uomTo.Text = "Unit of measurement:";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(324, 162);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.uomTo);
+            this.Controls.Add(this.uomFrom);
+            this.Controls.Add(this.resultLabel);
+            this.Controls.Add(this.enterValue);
             this.Controls.Add(this.Value);
             this.Controls.Add(this.Result);
             this.Controls.Add(this.UOM2);
@@ -149,10 +149,10 @@
         private System.Windows.Forms.ComboBox UOM2;
         private System.Windows.Forms.TextBox Result;
         private System.Windows.Forms.TextBox Value;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label enterValue;
+        private System.Windows.Forms.Label resultLabel;
+        private System.Windows.Forms.Label uomFrom;
+        private System.Windows.Forms.Label uomTo;
     }
 }
 
