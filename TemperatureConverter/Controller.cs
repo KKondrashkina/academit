@@ -7,7 +7,22 @@ namespace TemperatureConverter
 {
     class Controller
     {
-        public static string ChangeValue(string text, string unitOfMeasurement1, string unitOfMeasurement2)
+        List<ITemperatureUnit> temperatureUnits = new List<ITemperatureUnit>();
+
+        public string[] UOMsList => temperatureUnits.Select(n => n.Name).ToArray();
+
+        public Controller()
+        {
+            Kelvin kelvin = new Kelvin();
+            Fahrenheit fahrenheit = new Fahrenheit();
+            Celsius celsius = new Celsius();
+
+            temperatureUnits.Add(kelvin);
+            temperatureUnits.Add(fahrenheit);
+            temperatureUnits.Add(celsius);
+        }
+
+        public string ChangeValue(string text, string unitOfMeasurement1, string unitOfMeasurement2)
         {
             if (IsNumber(text))
             {
@@ -22,22 +37,12 @@ namespace TemperatureConverter
             return "";
         }
 
-        private static string GetValue(string text, string unitOfMeasurement1, string unitOfMeasurement2)
+        private string GetValue(string text, string unitOfMeasurement1, string unitOfMeasurement2)
         {
             if (unitOfMeasurement1 == "" || unitOfMeasurement2 == "")
             {
                 return "";
             }
-
-            List<ITemperatureUnit> temperatureUnits = new List<ITemperatureUnit>();
-
-            Kelvin kelvin = new Kelvin();
-            Fahrenheit fahrenheit = new Fahrenheit();
-            Celsius celsius = new Celsius();
-
-            temperatureUnits.Add(kelvin);
-            temperatureUnits.Add(fahrenheit);
-            temperatureUnits.Add(celsius);
 
             ITemperatureUnit from = temperatureUnits.First(n => n.Name == unitOfMeasurement1);
             ITemperatureUnit to = temperatureUnits.First(n => n.Name == unitOfMeasurement2);

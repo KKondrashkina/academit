@@ -43,10 +43,6 @@
             // 
             this.UOM1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.UOM1.FormattingEnabled = true;
-            this.UOM1.Items.AddRange(new object[] {
-            "Celsius degrees",
-            "Kelvins",
-            "Fahrenheit degrees"});
             this.UOM1.Location = new System.Drawing.Point(175, 50);
             this.UOM1.Name = "UOM1";
             this.UOM1.Size = new System.Drawing.Size(120, 21);
@@ -57,10 +53,6 @@
             // 
             this.UOM2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.UOM2.FormattingEnabled = true;
-            this.UOM2.Items.AddRange(new object[] {
-            "Celsius degrees",
-            "Kelvins",
-            "Fahrenheit degrees"});
             this.UOM2.Location = new System.Drawing.Point(175, 100);
             this.UOM2.Name = "UOM2";
             this.UOM2.Size = new System.Drawing.Size(120, 21);

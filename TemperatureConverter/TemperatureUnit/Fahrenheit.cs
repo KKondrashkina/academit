@@ -2,13 +2,7 @@
 {
     class Fahrenheit : ITemperatureUnit
     {
-        public string Name
-        {
-            get
-            {
-                return "Fahrenheit degrees";
-            }
-        }
+        public string Name => "Fahrenheit degrees";
 
         public double ConvertToCelsius(double value)
         {
