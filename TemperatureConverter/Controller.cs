@@ -7,12 +7,14 @@ namespace TemperatureConverter
 {
     class Controller
     {
-        List<ITemperatureUnit> temperatureUnits = new List<ITemperatureUnit>();
+        private readonly List<ITemperatureUnit> temperatureUnits;
 
         public string[] UOMsList => temperatureUnits.Select(n => n.Name).ToArray();
 
         public Controller()
         {
+            temperatureUnits = new List<ITemperatureUnit>();
+
             Kelvin kelvin = new Kelvin();
             Fahrenheit fahrenheit = new Fahrenheit();
             Celsius celsius = new Celsius();
