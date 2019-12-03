@@ -157,6 +157,11 @@ namespace MyTree
 
             if (parent == null)
             {
+                if (Compare(item, root.Data) != 0)
+                {
+                    return false;
+                }
+
                 currentNode = root;
             }
             else
@@ -263,7 +268,7 @@ namespace MyTree
                 else
                 {
                     parent.Right = newCurrentNode;
-                }                
+                }
             }
 
             Count--;
