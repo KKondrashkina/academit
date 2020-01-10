@@ -13,15 +13,10 @@ namespace TemperatureConverter
 
         public Controller()
         {
-            temperatureUnits = new List<ITemperatureUnit>();
-
-            Kelvin kelvin = new Kelvin();
-            Fahrenheit fahrenheit = new Fahrenheit();
-            Celsius celsius = new Celsius();
-
-            temperatureUnits.Add(kelvin);
-            temperatureUnits.Add(fahrenheit);
-            temperatureUnits.Add(celsius);
+            temperatureUnits = new List<ITemperatureUnit>
+            {
+                new Kelvin(), new Fahrenheit(), new Celsius()
+            };
         }
 
         public string ChangeValue(string text, string unitOfMeasurement1, string unitOfMeasurement2)

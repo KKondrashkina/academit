@@ -306,17 +306,3 @@ __pycache__/
 # tools/**
 # !tools/packages.config
 
-# Tabs Studio
-*.tss
-/Minesweeper/App.config
-/Minesweeper/Class1.cs
-/Minesweeper/Form1.cs
-/Minesweeper/Form1.Designer.cs
-/Minesweeper/Form1.resx
-/Minesweeper/Minesweeper.csproj
-/Minesweeper/Program.cs
-/Minesweeper/Properties/AssemblyInfo.cs
-/Minesweeper/Properties/Resources.Designer.cs
-/Minesweeper/Properties/Resources.resx
-/Minesweeper/Properties/Settings.Designer.cs
-/Minesweeper/Properties/Settings.settings
