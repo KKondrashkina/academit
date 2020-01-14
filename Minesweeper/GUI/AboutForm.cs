@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Minesweeper
+namespace Minesweeper.GUI
 {
     public partial class AboutForm : Form
     {

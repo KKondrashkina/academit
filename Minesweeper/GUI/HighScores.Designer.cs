@@ -1,4 +1,4 @@
-﻿namespace Minesweeper
+﻿namespace Minesweeper.GUI
 {
     partial class HighScores
     {
@@ -30,10 +30,20 @@
         {
             this.amateur = new System.Windows.Forms.RadioButton();
             this.professional = new System.Windows.Forms.RadioButton();
-            this.begginer = new System.Windows.Forms.RadioButton();
+            this.beginner = new System.Windows.Forms.RadioButton();
             this.levels = new System.Windows.Forms.TableLayoutPanel();
             this.allElements = new System.Windows.Forms.TableLayoutPanel();
             this.highScoresTable = new System.Windows.Forms.TableLayoutPanel();
+            this.date6 = new System.Windows.Forms.Label();
+            this.date5 = new System.Windows.Forms.Label();
+            this.date9 = new System.Windows.Forms.Label();
+            this.date4 = new System.Windows.Forms.Label();
+            this.date8 = new System.Windows.Forms.Label();
+            this.date3 = new System.Windows.Forms.Label();
+            this.date7 = new System.Windows.Forms.Label();
+            this.date2 = new System.Windows.Forms.Label();
+            this.date1 = new System.Windows.Forms.Label();
+            this.date0 = new System.Windows.Forms.Label();
             this.third = new System.Windows.Forms.PictureBox();
             this.second = new System.Windows.Forms.PictureBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -57,16 +67,6 @@
             this.gameTime7 = new System.Windows.Forms.Label();
             this.gameTime8 = new System.Windows.Forms.Label();
             this.gameTime9 = new System.Windows.Forms.Label();
-            this.date0 = new System.Windows.Forms.Label();
-            this.date1 = new System.Windows.Forms.Label();
-            this.date2 = new System.Windows.Forms.Label();
-            this.date7 = new System.Windows.Forms.Label();
-            this.date3 = new System.Windows.Forms.Label();
-            this.date8 = new System.Windows.Forms.Label();
-            this.date4 = new System.Windows.Forms.Label();
-            this.date9 = new System.Windows.Forms.Label();
-            this.date5 = new System.Windows.Forms.Label();
-            this.date6 = new System.Windows.Forms.Label();
             this.levels.SuspendLayout();
             this.allElements.SuspendLayout();
             this.highScoresTable.SuspendLayout();
@@ -117,26 +117,26 @@
             this.professional.UseVisualStyleBackColor = true;
             this.professional.CheckedChanged += new System.EventHandler(this.Professional_CheckedChanged);
             // 
-            // begginer
+            // beginner
             // 
-            this.begginer.Appearance = System.Windows.Forms.Appearance.Button;
-            this.begginer.AutoSize = true;
-            this.begginer.BackColor = System.Drawing.Color.Transparent;
-            this.begginer.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.begginer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.begginer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.begginer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.begginer.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.begginer.Location = new System.Drawing.Point(0, 0);
-            this.begginer.Margin = new System.Windows.Forms.Padding(0);
-            this.begginer.Name = "begginer";
-            this.begginer.Size = new System.Drawing.Size(88, 32);
-            this.begginer.TabIndex = 4;
-            this.begginer.TabStop = true;
-            this.begginer.Text = "Begginer";
-            this.begginer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.begginer.UseVisualStyleBackColor = false;
-            this.begginer.CheckedChanged += new System.EventHandler(this.Begginer_CheckedChanged);
+            this.beginner.Appearance = System.Windows.Forms.Appearance.Button;
+            this.beginner.AutoSize = true;
+            this.beginner.BackColor = System.Drawing.Color.Transparent;
+            this.beginner.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.beginner.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.beginner.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.beginner.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.beginner.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.beginner.Location = new System.Drawing.Point(0, 0);
+            this.beginner.Margin = new System.Windows.Forms.Padding(0);
+            this.beginner.Name = "beginner";
+            this.beginner.Size = new System.Drawing.Size(88, 32);
+            this.beginner.TabIndex = 4;
+            this.beginner.TabStop = true;
+            this.beginner.Text = "Beginner";
+            this.beginner.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.beginner.UseVisualStyleBackColor = false;
+            this.beginner.CheckedChanged += new System.EventHandler(this.Beginner_CheckedChanged);
             // 
             // levels
             // 
@@ -145,7 +145,7 @@
             this.levels.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.levels.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.levels.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.levels.Controls.Add(this.begginer, 0, 0);
+            this.levels.Controls.Add(this.beginner, 0, 0);
             this.levels.Controls.Add(this.professional, 2, 0);
             this.levels.Controls.Add(this.amateur, 1, 0);
             this.levels.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -180,7 +180,7 @@
             this.highScoresTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.highScoresTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.highScoresTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
-            this.highScoresTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 51F));
+            this.highScoresTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 99F));
             this.highScoresTable.Controls.Add(this.date6, 3, 6);
             this.highScoresTable.Controls.Add(this.date5, 3, 5);
             this.highScoresTable.Controls.Add(this.date9, 3, 9);
@@ -231,6 +231,136 @@
             this.highScoresTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.highScoresTable.Size = new System.Drawing.Size(224, 294);
             this.highScoresTable.TabIndex = 6;
+            // 
+            // date6
+            // 
+            this.date6.AutoSize = true;
+            this.date6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.date6.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.date6.ForeColor = System.Drawing.SystemColors.Menu;
+            this.date6.Location = new System.Drawing.Point(128, 174);
+            this.date6.Name = "date6";
+            this.date6.Size = new System.Drawing.Size(93, 29);
+            this.date6.TabIndex = 32;
+            this.date6.Text = "—";
+            this.date6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // date5
+            // 
+            this.date5.AutoSize = true;
+            this.date5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.date5.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.date5.ForeColor = System.Drawing.SystemColors.Menu;
+            this.date5.Location = new System.Drawing.Point(128, 145);
+            this.date5.Name = "date5";
+            this.date5.Size = new System.Drawing.Size(93, 29);
+            this.date5.TabIndex = 31;
+            this.date5.Text = "—";
+            this.date5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // date9
+            // 
+            this.date9.AutoSize = true;
+            this.date9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.date9.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.date9.ForeColor = System.Drawing.SystemColors.Menu;
+            this.date9.Location = new System.Drawing.Point(128, 261);
+            this.date9.Name = "date9";
+            this.date9.Size = new System.Drawing.Size(93, 33);
+            this.date9.TabIndex = 30;
+            this.date9.Text = "—";
+            this.date9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // date4
+            // 
+            this.date4.AutoSize = true;
+            this.date4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.date4.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.date4.ForeColor = System.Drawing.SystemColors.Menu;
+            this.date4.Location = new System.Drawing.Point(128, 116);
+            this.date4.Name = "date4";
+            this.date4.Size = new System.Drawing.Size(93, 29);
+            this.date4.TabIndex = 29;
+            this.date4.Text = "—";
+            this.date4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // date8
+            // 
+            this.date8.AutoSize = true;
+            this.date8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.date8.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.date8.ForeColor = System.Drawing.SystemColors.Menu;
+            this.date8.Location = new System.Drawing.Point(128, 232);
+            this.date8.Name = "date8";
+            this.date8.Size = new System.Drawing.Size(93, 29);
+            this.date8.TabIndex = 28;
+            this.date8.Text = "—";
+            this.date8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // date3
+            // 
+            this.date3.AutoSize = true;
+            this.date3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.date3.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.date3.ForeColor = System.Drawing.SystemColors.Menu;
+            this.date3.Location = new System.Drawing.Point(128, 87);
+            this.date3.Name = "date3";
+            this.date3.Size = new System.Drawing.Size(93, 29);
+            this.date3.TabIndex = 27;
+            this.date3.Text = "—";
+            this.date3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // date7
+            // 
+            this.date7.AutoSize = true;
+            this.date7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.date7.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.date7.ForeColor = System.Drawing.SystemColors.Menu;
+            this.date7.Location = new System.Drawing.Point(128, 203);
+            this.date7.Name = "date7";
+            this.date7.Size = new System.Drawing.Size(93, 29);
+            this.date7.TabIndex = 26;
+            this.date7.Text = "—";
+            this.date7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // date2
+            // 
+            this.date2.AutoSize = true;
+            this.date2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.date2.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.date2.ForeColor = System.Drawing.SystemColors.Menu;
+            this.date2.Location = new System.Drawing.Point(128, 58);
+            this.date2.Name = "date2";
+            this.date2.Size = new System.Drawing.Size(93, 29);
+            this.date2.TabIndex = 25;
+            this.date2.Text = "—";
+            this.date2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // date1
+            // 
+            this.date1.AutoSize = true;
+            this.date1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.date1.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.date1.ForeColor = System.Drawing.SystemColors.Menu;
+            this.date1.Location = new System.Drawing.Point(128, 29);
+            this.date1.Name = "date1";
+            this.date1.Size = new System.Drawing.Size(93, 29);
+            this.date1.TabIndex = 24;
+            this.date1.Text = "—";
+            this.date1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // date0
+            // 
+            this.date0.AutoSize = true;
+            this.date0.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.date0.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.date0.ForeColor = System.Drawing.SystemColors.Menu;
+            this.date0.Location = new System.Drawing.Point(128, 0);
+            this.date0.Name = "date0";
+            this.date0.Size = new System.Drawing.Size(93, 29);
+            this.date0.TabIndex = 23;
+            this.date0.Text = "—";
+            this.date0.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // third
             // 
@@ -541,137 +671,7 @@
             this.gameTime9.Text = "—";
             this.gameTime9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // date0
-            // 
-            this.date0.AutoSize = true;
-            this.date0.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.date0.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.date0.ForeColor = System.Drawing.SystemColors.Menu;
-            this.date0.Location = new System.Drawing.Point(128, 0);
-            this.date0.Name = "date0";
-            this.date0.Size = new System.Drawing.Size(93, 29);
-            this.date0.TabIndex = 23;
-            this.date0.Text = "—";
-            this.date0.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // date1
-            // 
-            this.date1.AutoSize = true;
-            this.date1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.date1.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.date1.ForeColor = System.Drawing.SystemColors.Menu;
-            this.date1.Location = new System.Drawing.Point(128, 29);
-            this.date1.Name = "date1";
-            this.date1.Size = new System.Drawing.Size(93, 29);
-            this.date1.TabIndex = 24;
-            this.date1.Text = "—";
-            this.date1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // date2
-            // 
-            this.date2.AutoSize = true;
-            this.date2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.date2.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.date2.ForeColor = System.Drawing.SystemColors.Menu;
-            this.date2.Location = new System.Drawing.Point(128, 58);
-            this.date2.Name = "date2";
-            this.date2.Size = new System.Drawing.Size(93, 29);
-            this.date2.TabIndex = 25;
-            this.date2.Text = "—";
-            this.date2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // date7
-            // 
-            this.date7.AutoSize = true;
-            this.date7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.date7.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.date7.ForeColor = System.Drawing.SystemColors.Menu;
-            this.date7.Location = new System.Drawing.Point(128, 203);
-            this.date7.Name = "date7";
-            this.date7.Size = new System.Drawing.Size(93, 29);
-            this.date7.TabIndex = 26;
-            this.date7.Text = "—";
-            this.date7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // date3
-            // 
-            this.date3.AutoSize = true;
-            this.date3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.date3.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.date3.ForeColor = System.Drawing.SystemColors.Menu;
-            this.date3.Location = new System.Drawing.Point(128, 87);
-            this.date3.Name = "date3";
-            this.date3.Size = new System.Drawing.Size(93, 29);
-            this.date3.TabIndex = 27;
-            this.date3.Text = "—";
-            this.date3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // date8
-            // 
-            this.date8.AutoSize = true;
-            this.date8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.date8.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.date8.ForeColor = System.Drawing.SystemColors.Menu;
-            this.date8.Location = new System.Drawing.Point(128, 232);
-            this.date8.Name = "date8";
-            this.date8.Size = new System.Drawing.Size(93, 29);
-            this.date8.TabIndex = 28;
-            this.date8.Text = "—";
-            this.date8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // date4
-            // 
-            this.date4.AutoSize = true;
-            this.date4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.date4.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.date4.ForeColor = System.Drawing.SystemColors.Menu;
-            this.date4.Location = new System.Drawing.Point(128, 116);
-            this.date4.Name = "date4";
-            this.date4.Size = new System.Drawing.Size(93, 29);
-            this.date4.TabIndex = 29;
-            this.date4.Text = "—";
-            this.date4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // date9
-            // 
-            this.date9.AutoSize = true;
-            this.date9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.date9.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.date9.ForeColor = System.Drawing.SystemColors.Menu;
-            this.date9.Location = new System.Drawing.Point(128, 261);
-            this.date9.Name = "date9";
-            this.date9.Size = new System.Drawing.Size(93, 33);
-            this.date9.TabIndex = 30;
-            this.date9.Text = "—";
-            this.date9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // date5
-            // 
-            this.date5.AutoSize = true;
-            this.date5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.date5.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.date5.ForeColor = System.Drawing.SystemColors.Menu;
-            this.date5.Location = new System.Drawing.Point(128, 145);
-            this.date5.Name = "date5";
-            this.date5.Size = new System.Drawing.Size(93, 29);
-            this.date5.TabIndex = 31;
-            this.date5.Text = "—";
-            this.date5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // date6
-            // 
-            this.date6.AutoSize = true;
-            this.date6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.date6.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.date6.ForeColor = System.Drawing.SystemColors.Menu;
-            this.date6.Location = new System.Drawing.Point(128, 174);
-            this.date6.Name = "date6";
-            this.date6.Size = new System.Drawing.Size(93, 29);
-            this.date6.TabIndex = 32;
-            this.date6.Text = "—";
-            this.date6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // Statistics
+            // HighScores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -681,8 +681,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Statistics";
+            this.Name = "HighScores";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Statistics";
             this.levels.ResumeLayout(false);
             this.levels.PerformLayout();
@@ -699,7 +700,7 @@
         #endregion
         private System.Windows.Forms.RadioButton amateur;
         private System.Windows.Forms.RadioButton professional;
-        private System.Windows.Forms.RadioButton begginer;
+        private System.Windows.Forms.RadioButton beginner;
         private System.Windows.Forms.TableLayoutPanel levels;
         private System.Windows.Forms.TableLayoutPanel allElements;
         private System.Windows.Forms.TableLayoutPanel highScoresTable;

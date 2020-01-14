@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Minesweeper
+namespace Minesweeper.Logic
 {
     class Minefield
     {
@@ -20,9 +20,9 @@ namespace Minesweeper
 
             Cells = new Cell[Height, Width];
 
-            for (int i = 0; i < Height; i++)
+            for (var i = 0; i < Height; i++)
             {
-                for (int j = 0; j < Width; j++)
+                for (var j = 0; j < Width; j++)
                 {
                     Cells[i, j] = new Cell
                     {
@@ -37,16 +37,16 @@ namespace Minesweeper
 
         public void MineTheField(int cellX, int cellY)
         {
-            Random random = new Random();
+            var random = new Random();
 
-            int minesCount = 0;
+            var minesCount = 0;
 
             while (minesCount != MinesCount)
             {
                 while (minesCount != MinesCount)
                 {
-                    int y = random.Next(0, Height);
-                    int x = random.Next(0, Width);
+                    var y = random.Next(0, Height);
+                    var x = random.Next(0, Width);
 
                     if (!Cells[y, x].IsMine)
                     {
@@ -56,14 +56,14 @@ namespace Minesweeper
                     }
                 }
 
-                for (int i = -1; i <= 1; i++)
+                for (var i = -1; i <= 1; i++)
                 {
                     if (cellY + i < 0 || cellY + i == Height)
                     {
                         continue;
                     }
 
-                    for (int j = -1; j <= 1; j++)
+                    for (var j = -1; j <= 1; j++)
                     {
                         if (cellX + j < 0 || cellX + j == Width)
                         {
@@ -83,24 +83,24 @@ namespace Minesweeper
 
         public void SetNumbers()
         {
-            int detectedMines = 0;
+            var detectedMines = 0;
 
-            for (int i = 0; i < Height; i++)
+            for (var i = 0; i < Height; i++)
             {
-                for (int j = 0; j < Width; j++)
+                for (var j = 0; j < Width; j++)
                 {
                     if (Cells[i, j].IsMine)
                     {
                         detectedMines++;
 
-                        for (int k = -1; k <= 1; k++)
+                        for (var k = -1; k <= 1; k++)
                         {
                             if (i + k < 0 || i + k == Height)
                             {
                                 continue;
                             }
 
-                            for (int l = -1; l <= 1; l++)
+                            for (var l = -1; l <= 1; l++)
                             {
                                 if (j + l < 0 || j + l == Width)
                                 {

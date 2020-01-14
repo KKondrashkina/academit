@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Minesweeper.GUI;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 
-namespace Minesweeper
+namespace Minesweeper.Logic
 {
     public class Presenter
     {
@@ -17,7 +18,7 @@ namespace Minesweeper
         {
             this.view = view;
 
-            settings = new Settings(Settings.Levels.Begginer);
+            settings = new Settings(Settings.Levels.Beginner);
 
             minefield = new Minefield(settings);
 
@@ -53,9 +54,9 @@ namespace Minesweeper
         {
             OpenMinedCells();
 
-            EndGame endGame = new EndGame();
+            var endGame = new EndGame();
 
-            int time = view.EndGame();
+            var time = view.EndGame();
 
             endGame.SetTime(time);
 
@@ -66,7 +67,7 @@ namespace Minesweeper
 
             endGame.SetGameResult(win);
 
-            DialogResult result = endGame.ShowDialog();
+            var result = endGame.ShowDialog();
 
             if (result == DialogResult.Yes)
             {
@@ -138,16 +139,18 @@ namespace Minesweeper
 
         public void OpenCell(int x, int y)
         {
-            if (!minefield.Cells[y, x].IsFlag)
+            if (minefield.Cells[y, x].IsFlag)
             {
-                if (minefield.Cells[y, x].MinesAroundCount == 0)
-                {
-                    OpenEmptyCells(x, y);
-                }
-                else
-                {
-                    OpenOneCell(x, y);
-                }
+                return;
+            }
+
+            if (minefield.Cells[y, x].MinesAroundCount == 0)
+            {
+                OpenEmptyCells(x, y);
+            }
+            else
+            {
+                OpenOneCell(x, y);
             }
         }
 
@@ -190,18 +193,18 @@ namespace Minesweeper
                 return;
             }
 
-            int flagsCount = 0;
+            var flagsCount = 0;
 
-            Queue<Cell> cellsQueue = new Queue<Cell>();
+            var cellsQueue = new Queue<Cell>();
 
-            for (int i = -1; i <= 1; i++)
+            for (var i = -1; i <= 1; i++)
             {
                 if (y + i < 0 || y + i == minefield.Height)
                 {
                     continue;
                 }
 
-                for (int j = -1; j <= 1; j++)
+                for (var j = -1; j <= 1; j++)
                 {
                     if (x + j < 0 || x + j == minefield.Width)
                     {
@@ -224,7 +227,7 @@ namespace Minesweeper
 
             if (flagsCount == minefield.Cells[y, x].MinesAroundCount)
             {
-                foreach (Cell cell in cellsQueue)
+                foreach (var cell in cellsQueue)
                 {
                     OpenCell(cell.X, cell.Y);
                 }
@@ -233,11 +236,11 @@ namespace Minesweeper
 
         public void OpenMinedCells()
         {
-            int openMinedCellsCount = 1;
+            var openMinedCellsCount = 1;
 
-            for (int i = 0; i < settings.Height; i++)
+            for (var i = 0; i < settings.Height; i++)
             {
-                for (int j = 0; j < settings.Width; j++)
+                for (var j = 0; j < settings.Width; j++)
                 {
                     if (minefield.Cells[i, j].IsMine && !minefield.Cells[i, j].IsOpen)
                     {
@@ -258,19 +261,17 @@ namespace Minesweeper
 
         public void OpenEmptyCells(int x, int y)
         {
-            bool[,] isVisited = new bool[settings.Height, settings.Width];
+            var isVisited = new bool[settings.Height, settings.Width];
 
-            Queue<Cell> queue = new Queue<Cell>();
+            var queue = new Queue<Cell>();
 
             queue.Enqueue(minefield.Cells[y, x]);
 
             isVisited[y, x] = true;
 
-            Cell currentCell;
-
             while (queue.Count != 0)
             {
-                currentCell = queue.Dequeue();
+                var currentCell = queue.Dequeue();
 
                 if (!minefield.Cells[currentCell.Y, currentCell.X].IsFlag &&
                     !minefield.Cells[currentCell.Y, currentCell.X].IsOpen)
@@ -280,14 +281,14 @@ namespace Minesweeper
 
                 if (currentCell.MinesAroundCount == 0)
                 {
-                    for (int k = -1; k <= 1; k++)
+                    for (var k = -1; k <= 1; k++)
                     {
                         if (currentCell.Y + k < 0 || currentCell.Y + k == minefield.Height)
                         {
                             continue;
                         }
 
-                        for (int l = -1; l <= 1; l++)
+                        for (var l = -1; l <= 1; l++)
                         {
                             if (currentCell.X + l < 0 || currentCell.X + l == minefield.Width)
                             {
@@ -350,9 +351,9 @@ namespace Minesweeper
             }
         }
 
-        private void WriteToFile(string result, string path)
+        private static void WriteToFile(string result, string path)
         {
-            using (StreamWriter writer = new StreamWriter(path, true))
+            using (var writer = new StreamWriter(path, true))
             {
                 writer.WriteLine(result);
             }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Minesweeper
+namespace Minesweeper.GUI
 {
     public partial class EndGame : Form
     {
@@ -12,26 +12,19 @@ namespace Minesweeper
             InitializeComponent();
         }
 
-        public void SetTime(int time)
+        public void SetTime(int value)
         {
-            this.time = time;
+            time = value;
         }
 
-        public void SetGameResult(bool result)
+        public void SetGameResult(bool gameResult)
         {
-            if (result)
-            {
-                this.result.Text = "You win!";
-            }
-            else
-            {
-                this.result.Text = "You lose!";
-            }
+            result.Text = gameResult ? @"You win!" : @"You lose!";
         }
 
         private void EndGame_Load(object sender, EventArgs e)
         {
-            gameTime.Text = $"Game time: {time} seconds.";
+            gameTime.Text = $@"Game time: {time} seconds.";
         }
 
         private void EndGame_FormClosed(object sender, FormClosedEventArgs e)

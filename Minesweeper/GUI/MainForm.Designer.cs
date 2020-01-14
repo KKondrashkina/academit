@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace Minesweeper
+namespace Minesweeper.GUI
 {
     partial class MainForm
     {
@@ -84,38 +84,41 @@ namespace Minesweeper
             // newGameMenuItem
             // 
             this.newGameMenuItem.Name = "newGameMenuItem";
-            this.newGameMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newGameMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
+            this.newGameMenuItem.Size = new System.Drawing.Size(156, 22);
             this.newGameMenuItem.Text = "New game";
             this.newGameMenuItem.Click += new System.EventHandler(this.NewGameMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(153, 6);
             // 
             // settingsMenuItem
             // 
             this.settingsMenuItem.Name = "settingsMenuItem";
-            this.settingsMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.settingsMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
+            this.settingsMenuItem.Size = new System.Drawing.Size(156, 22);
             this.settingsMenuItem.Text = "Settings";
             this.settingsMenuItem.Click += new System.EventHandler(this.SettingsMenuItem_Click);
             // 
             // highScoresMenuItem
             // 
             this.highScoresMenuItem.Name = "highScoresMenuItem";
-            this.highScoresMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.highScoresMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F4;
+            this.highScoresMenuItem.Size = new System.Drawing.Size(156, 22);
             this.highScoresMenuItem.Text = "High Scores";
             this.highScoresMenuItem.Click += new System.EventHandler(this.HighScoresMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(153, 6);
             // 
             // exitMenuItem
             // 
             this.exitMenuItem.Name = "exitMenuItem";
-            this.exitMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitMenuItem.Size = new System.Drawing.Size(156, 22);
             this.exitMenuItem.Text = "Exit";
             this.exitMenuItem.Click += new System.EventHandler(this.ExitMenuItem_Click);
             // 
@@ -123,6 +126,7 @@ namespace Minesweeper
             // 
             this.aboutMenuItem.BackColor = System.Drawing.SystemColors.ControlDark;
             this.aboutMenuItem.Name = "aboutMenuItem";
+            this.aboutMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
             this.aboutMenuItem.Size = new System.Drawing.Size(52, 20);
             this.aboutMenuItem.Text = "About";
             this.aboutMenuItem.Click += new System.EventHandler(this.AboutMenuItem_Click);
@@ -250,6 +254,7 @@ namespace Minesweeper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(300, 354);
             this.Controls.Add(this.allElements);
             this.Controls.Add(this.menu);
@@ -258,7 +263,7 @@ namespace Minesweeper
             this.MainMenuStrip = this.menu;
             this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Minesweeper";
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
@@ -287,10 +292,10 @@ namespace Minesweeper
         private TableLayoutPanel information;
         private Timer timer;
         private PictureBox minePicture;
-        private TableLayoutPanel field;
         private Label minesCount;
         private Label gameTime;
         private PictureBox clockPicture;
+        private TableLayoutPanel field;
     }
 }
 

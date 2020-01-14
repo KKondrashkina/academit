@@ -2,8 +2,10 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using Minesweeper.Logic;
+using Settings = Minesweeper.Logic.Settings;
 
-namespace Minesweeper
+namespace Minesweeper.GUI
 {
     public partial class MainForm : Form, IView
     {
@@ -18,7 +20,7 @@ namespace Minesweeper
         private readonly Presenter presenter;
         private readonly TableLayoutPanel cells;
 
-        private int time = 0;
+        private int time;
 
         public MainForm()
         {
@@ -30,9 +32,8 @@ namespace Minesweeper
             {
                 AutoSize = true,
                 AutoSizeMode = AutoSizeMode.GrowAndShrink,
-                Dock = DockStyle.Fill,
-                BackColor = SystemColors.ControlDarkDark,
-                Margin = new Padding(20, 20, 20, 20)
+                Anchor = AnchorStyles.None,
+                BackColor = SystemColors.ControlDarkDark
             };
 
             cells.MouseDown += Cells_MouseDown;
@@ -50,7 +51,7 @@ namespace Minesweeper
         {
             timer.Stop();
 
-            gameTime.Text = "0";
+            gameTime.Text = @"0";
 
             minesCount.Text = Convert.ToString(NotFoundMinesCount);
         }
@@ -67,21 +68,21 @@ namespace Minesweeper
             MaximumSize = new Size(FieldWidth * 26 + 56, FieldHeight * 26 + 132);
             Size = MaximumSize;
 
-            for (int i = 0; i < FieldWidth; i++)
+            for (var i = 0; i < FieldWidth; i++)
             {
-                cells.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 1));
+                cells.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 26));
             }
 
-            for (int i = 0; i < FieldHeight; i++)
+            for (var i = 0; i < FieldHeight; i++)
             {
-                cells.RowStyles.Add(new RowStyle(SizeType.Percent, 1));
+                cells.RowStyles.Add(new RowStyle(SizeType.Absolute, 26));
             }
 
-            for (int i = 0; i < FieldHeight; i++)
+            for (var i = 0; i < FieldHeight; i++)
             {
-                for (int j = 0; j < FieldWidth; j++)
+                for (var j = 0; j < FieldWidth; j++)
                 {
-                    Button button = new Button
+                    var button = new Button
                     {
                         Margin = new Padding(0),
                         Name = $"button{j}.{i}",
@@ -172,8 +173,8 @@ namespace Minesweeper
 
         private void Button_MouseDown(object sender, MouseEventArgs e)
         {
-            int x = cells.GetCellPosition((Control)sender).Column;
-            int y = cells.GetCellPosition((Control)sender).Row;
+            var x = cells.GetCellPosition((Control)sender).Column;
+            var y = cells.GetCellPosition((Control)sender).Row;
 
             timer.Start();
 
@@ -191,20 +192,10 @@ namespace Minesweeper
             PutImageToCell(x, y);
         }
 
-        private void Button_MouseWheel(object sender, MouseEventArgs e)
-        {
-            int x = cells.GetCellPosition((Control)sender).Column;
-            int y = cells.GetCellPosition((Control)sender).Row;
-
-            presenter.OpenNeighboringCells(x, y);
-
-            PutImageToCell(x, y);
-        }
-
         private void Cells_MouseDown(object sender, MouseEventArgs e)
         {
-            int x = e.X / (cells.Width / FieldWidth);
-            int y = e.Y / (cells.Height / FieldHeight);
+            var x = e.X / (cells.Width / FieldWidth);
+            var y = e.Y / (cells.Height / FieldHeight);
 
             if (e.Button == MouseButtons.Middle)
             {
@@ -226,16 +217,16 @@ namespace Minesweeper
 
         private void SettingsMenuItem_Click(object sender, EventArgs e)
         {
-            SettingsForm settings = new SettingsForm(presenter);
+            var settings = new SettingsForm(presenter);
 
             settings.ShowDialog();
         }
 
         private void HighScoresMenuItem_Click(object sender, EventArgs e)
         {
-            HighScores highScores = new HighScores();
+            var highScores = new HighScores();
 
-            highScores.Show();
+            highScores.ShowDialog();
         }
 
         private void ExitMenuItem_Click(object sender, EventArgs e)
@@ -245,7 +236,7 @@ namespace Minesweeper
 
         private void AboutMenuItem_Click(object sender, EventArgs e)
         {
-            AboutForm about = new AboutForm();
+            var about = new AboutForm();
 
             about.ShowDialog();
         }

@@ -1,4 +1,4 @@
-﻿namespace Minesweeper
+﻿namespace Minesweeper.GUI
 {
     partial class AboutForm
     {
@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.allElements = new System.Windows.Forms.TableLayoutPanel();
-            this.ok = new System.Windows.Forms.Button();
             this.about = new System.Windows.Forms.Label();
+            this.ok = new System.Windows.Forms.Button();
             this.allElements.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,6 +50,19 @@
             this.allElements.Size = new System.Drawing.Size(204, 162);
             this.allElements.TabIndex = 14;
             // 
+            // about
+            // 
+            this.about.AutoSize = true;
+            this.about.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.about.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.about.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.about.Location = new System.Drawing.Point(15, 20);
+            this.about.Margin = new System.Windows.Forms.Padding(15, 20, 15, 10);
+            this.about.Name = "about";
+            this.about.Size = new System.Drawing.Size(174, 93);
+            this.about.TabIndex = 15;
+            this.about.Text = "Minesweeper by Kondrashkina Ekaterina Dmitrievna\r\n\r\nVersion: 1.0";
+            // 
             // ok
             // 
             this.ok.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -67,19 +80,6 @@
             this.ok.UseVisualStyleBackColor = false;
             this.ok.Click += new System.EventHandler(this.Ok_Click);
             // 
-            // about
-            // 
-            this.about.AutoSize = true;
-            this.about.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.about.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.about.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.about.Location = new System.Drawing.Point(15, 20);
-            this.about.Margin = new System.Windows.Forms.Padding(15, 20, 15, 10);
-            this.about.Name = "about";
-            this.about.Size = new System.Drawing.Size(174, 93);
-            this.about.TabIndex = 15;
-            this.about.Text = "Minesweeper by Kondrashkina Ekaterina Dmitrievna\r\n\r\nVersion: 1.0";
-            // 
             // AboutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -92,6 +92,7 @@
             this.MinimizeBox = false;
             this.Name = "AboutForm";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "About";
             this.allElements.ResumeLayout(false);
             this.allElements.PerformLayout();

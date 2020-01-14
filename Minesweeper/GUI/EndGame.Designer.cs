@@ -1,4 +1,4 @@
-﻿namespace Minesweeper
+﻿namespace Minesweeper.GUI
 {
     partial class EndGame
     {
@@ -143,6 +143,7 @@
             this.MinimizeBox = false;
             this.Name = "EndGame";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EndGame_FormClosed);
             this.Load += new System.EventHandler(this.EndGame_Load);
             this.allElements.ResumeLayout(false);

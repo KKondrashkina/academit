@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Minesweeper
+namespace Minesweeper.Logic
 {
     public class Settings
     {
@@ -14,9 +14,9 @@ namespace Minesweeper
 
         private readonly Dictionary<Levels, int[]> levels = new Dictionary<Levels, int[]>()
         {
-            {Levels.Begginer, new int[] {9,9,10} },
-            {Levels.Amateur, new int[]{16,16,40}},
-            {Levels.Professional, new int[]{16,30,99} }
+            {Levels.Beginner, new[] {9,9,10} },
+            {Levels.Amateur, new[] {16,16,40}},
+            {Levels.Professional, new[] {16,30,99} }
         };
 
         public Settings(Levels level)
@@ -39,7 +39,7 @@ namespace Minesweeper
 
         public enum Levels
         {
-            Begginer,
+            Beginner,
             Amateur,
             Professional,
             Special,

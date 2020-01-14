@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using Minesweeper.Logic;
 
-namespace Minesweeper
+namespace Minesweeper.GUI
 {
     public partial class HighScores : Form
     {
-        private List<Score> highScoresBegginer = new List<Score>();
+        private List<Score> highScoresBeginner = new List<Score>();
         private List<Score> highScoresAmateur = new List<Score>();
         private List<Score> highScoresProfessional = new List<Score>();
 
@@ -17,35 +17,35 @@ namespace Minesweeper
         {
             InitializeComponent();
 
-            begginer.Checked = true;
+            beginner.Checked = true;
         }
 
-        private void ReadFile(string path, List<Score> highScores)
+        private static void ReadFile(string path, List<Score> highScores)
         {
-            using (StreamReader reader = new StreamReader(path))
+            using (var reader = new StreamReader(path))
             {
                 string currentLine;
 
                 while ((currentLine = reader.ReadLine()) != null)
                 {
-                    string[] result = currentLine.Split('—');
+                    var result = currentLine.Split('—');
 
                     highScores.Add(new Score(Convert.ToInt32(result[0]), Convert.ToDateTime(result[1])));
                 }
             }
         }
 
-        private void WriteToFile(string path, Score score)
+        private static void WriteToFile(string path, Score score)
         {
-            using (StreamWriter writer = new StreamWriter(path, true))
+            using (var writer = new StreamWriter(path, true))
             {
                 writer.WriteLine(Convert.ToString(score.Result) + '—' + score.Date.ToShortDateString());
             }
         }
 
-        private List<Score> CreateNewHighScores(string path)
+        private static List<Score> CreateNewHighScores(string path)
         {
-            List<Score> highScores = new List<Score>();
+            var highScores = new List<Score>();
 
             ReadFile(path, highScores);
 
@@ -64,24 +64,24 @@ namespace Minesweeper
             return highScores;
         }
 
-        private void Begginer_CheckedChanged(object sender, EventArgs e)
+        private void Beginner_CheckedChanged(object sender, EventArgs e)
         {
-            if (begginer.Checked)
+            if (beginner.Checked)
             {
-                highScoresBegginer = CreateNewHighScores("highScoresBegginer.txt");
+                highScoresBeginner = CreateNewHighScores("highScoresBeginner.txt");
 
-                for (int i = 0; i < highScoresBegginer.Count; i++)
+                for (var i = 0; i < highScoresBeginner.Count; i++)
                 {
                     highScoresTable.Controls.Find($"gameTime{i}", false)[0].Text =
-                        Convert.ToString(highScoresBegginer[i].Result) + " sec.";
+                        Convert.ToString(highScoresBeginner[i].Result) + @" sec.";
 
                     highScoresTable.Controls.Find($"date{i}", false)[0].Text =
-                        highScoresBegginer[i].Date.ToShortDateString();
+                        highScoresBeginner[i].Date.ToShortDateString();
                 }
 
-                for (int i = highScoresBegginer.Count; i < 10; i++)
+                for (var i = highScoresBeginner.Count; i < 10; i++)
                 {
-                    highScoresTable.Controls.Find($"gameTime{i}", false)[0].Text = "—";
+                    highScoresTable.Controls.Find($"gameTime{i}", false)[0].Text = @"—";
                     highScoresTable.Controls.Find($"date{i}", false)[0].Text = "";
                 }
             }
@@ -93,18 +93,18 @@ namespace Minesweeper
             {
                 highScoresAmateur = CreateNewHighScores("highScoresAmateur.txt");
 
-                for (int i = 0; i < highScoresAmateur.Count; i++)
+                for (var i = 0; i < highScoresAmateur.Count; i++)
                 {
                     highScoresTable.Controls.Find($"gameTime{i}", false)[0].Text =
-                        Convert.ToString(highScoresAmateur[i].Result) + " sec.";
+                        Convert.ToString(highScoresAmateur[i].Result) + @" sec.";
 
                     highScoresTable.Controls.Find($"date{i}", false)[0].Text =
                         highScoresAmateur[i].Date.ToShortDateString();
                 }
 
-                for (int i = highScoresAmateur.Count; i < 10; i++)
+                for (var i = highScoresAmateur.Count; i < 10; i++)
                 {
-                    highScoresTable.Controls.Find($"gameTime{i}", false)[0].Text = "—";
+                    highScoresTable.Controls.Find($"gameTime{i}", false)[0].Text = @"—";
                     highScoresTable.Controls.Find($"date{i}", false)[0].Text = "";
                 }
             }
@@ -116,18 +116,18 @@ namespace Minesweeper
             {
                 highScoresProfessional = CreateNewHighScores("highScoresProfessional.txt");
 
-                for (int i = 0; i < highScoresProfessional.Count; i++)
+                for (var i = 0; i < highScoresProfessional.Count; i++)
                 {
                     highScoresTable.Controls.Find($"gameTime{i}", false)[0].Text =
-                        Convert.ToString(highScoresProfessional[i].Result) + " sec.";
+                        Convert.ToString(highScoresProfessional[i].Result) + @" sec.";
 
                     highScoresTable.Controls.Find($"date{i}", false)[0].Text =
                         highScoresProfessional[i].Date.ToShortDateString();
                 }
 
-                for (int i = highScoresProfessional.Count; i < 10; i++)
+                for (var i = highScoresProfessional.Count; i < 10; i++)
                 {
-                    highScoresTable.Controls.Find($"gameTime{i}", false)[0].Text = "—";
+                    highScoresTable.Controls.Find($"gameTime{i}", false)[0].Text = @"—";
                     highScoresTable.Controls.Find($"date{i}", false)[0].Text = "";
                 }
             }

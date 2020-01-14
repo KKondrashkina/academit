@@ -1,4 +1,4 @@
-﻿namespace Minesweeper
+﻿namespace Minesweeper.GUI
 {
     partial class SettingsForm
     {
@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
-            this.begginer = new System.Windows.Forms.RadioButton();
+            this.beginner = new System.Windows.Forms.RadioButton();
             this.amateur = new System.Windows.Forms.RadioButton();
             this.professional = new System.Windows.Forms.RadioButton();
             this.special = new System.Windows.Forms.RadioButton();
@@ -46,28 +46,28 @@
             this.ok = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // begginer
+            // beginner
             // 
-            this.begginer.AllowDrop = true;
-            this.begginer.AutoSize = true;
-            this.begginer.BackColor = System.Drawing.Color.Transparent;
-            this.begginer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.begginer.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.begginer.FlatAppearance.BorderSize = 6;
-            this.begginer.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.begginer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.begginer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.begginer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.begginer.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.begginer.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.begginer.Location = new System.Drawing.Point(20, 10);
-            this.begginer.Name = "begginer";
-            this.begginer.Size = new System.Drawing.Size(73, 52);
-            this.begginer.TabIndex = 0;
-            this.begginer.TabStop = true;
-            this.begginer.Text = "Begginer\r\n9 X 9 \r\n10 mines";
-            this.begginer.UseVisualStyleBackColor = true;
-            this.begginer.CheckedChanged += new System.EventHandler(this.Begginer_CheckedChanged);
+            this.beginner.AllowDrop = true;
+            this.beginner.AutoSize = true;
+            this.beginner.BackColor = System.Drawing.Color.Transparent;
+            this.beginner.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.beginner.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.beginner.FlatAppearance.BorderSize = 6;
+            this.beginner.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
+            this.beginner.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.beginner.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.beginner.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.beginner.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.beginner.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.beginner.Location = new System.Drawing.Point(20, 10);
+            this.beginner.Name = "beginner";
+            this.beginner.Size = new System.Drawing.Size(74, 52);
+            this.beginner.TabIndex = 0;
+            this.beginner.TabStop = true;
+            this.beginner.Text = "Beginner\r\n9 X 9 \r\n10 mines";
+            this.beginner.UseVisualStyleBackColor = true;
+            this.beginner.CheckedChanged += new System.EventHandler(this.Beginner_CheckedChanged);
             // 
             // amateur
             // 
@@ -255,7 +255,7 @@
             this.Controls.Add(this.special);
             this.Controls.Add(this.professional);
             this.Controls.Add(this.amateur);
-            this.Controls.Add(this.begginer);
+            this.Controls.Add(this.beginner);
             this.ForeColor = System.Drawing.SystemColors.Menu;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -264,6 +264,7 @@
             this.MinimumSize = new System.Drawing.Size(250, 360);
             this.Name = "SettingsForm";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Settings";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -272,7 +273,7 @@
 
         #endregion
 
-        private System.Windows.Forms.RadioButton begginer;
+        private System.Windows.Forms.RadioButton beginner;
         private System.Windows.Forms.RadioButton amateur;
         private System.Windows.Forms.RadioButton professional;
         private System.Windows.Forms.RadioButton special;
