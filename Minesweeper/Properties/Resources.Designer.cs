@@ -201,6 +201,33 @@ namespace Minesweeper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string highScoresAmateur {
+            get {
+                return ResourceManager.GetString("highScoresAmateur", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string highScoresBeginner {
+            get {
+                return ResourceManager.GetString("highScoresBeginner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string highScoresProfessional {
+            get {
+                return ResourceManager.GetString("highScoresProfessional", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Icon {

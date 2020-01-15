@@ -184,5 +184,14 @@
   <ItemGroup>
     <None Include="Resources\Gold.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\highScoresBeginner.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\highScoresAmateur.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\highScoresProfessional.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

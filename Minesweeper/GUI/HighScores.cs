@@ -68,7 +68,7 @@ namespace Minesweeper.GUI
         {
             if (beginner.Checked)
             {
-                highScoresBeginner = CreateNewHighScores("highScoresBeginner.txt");
+                highScoresBeginner = CreateNewHighScores("..\\..\\Resources\\highScoresBeginner.txt");
 
                 for (var i = 0; i < highScoresBeginner.Count; i++)
                 {
@@ -91,7 +91,7 @@ namespace Minesweeper.GUI
         {
             if (amateur.Checked)
             {
-                highScoresAmateur = CreateNewHighScores("highScoresAmateur.txt");
+                highScoresAmateur = CreateNewHighScores("..\\..\\Resources\\highScoresAmateur.txt");
 
                 for (var i = 0; i < highScoresAmateur.Count; i++)
                 {
@@ -114,7 +114,7 @@ namespace Minesweeper.GUI
         {
             if (professional.Checked)
             {
-                highScoresProfessional = CreateNewHighScores("highScoresProfessional.txt");
+                highScoresProfessional = CreateNewHighScores("..\\..\\Resources\\highScoresProfessional.txt");
 
                 for (var i = 0; i < highScoresProfessional.Count; i++)
                 {
