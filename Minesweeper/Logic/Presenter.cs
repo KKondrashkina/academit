@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
-using Minesweeper.Properties;
 
 namespace Minesweeper.Logic
 {
@@ -14,13 +13,6 @@ namespace Minesweeper.Logic
         private readonly IView view;
         private bool isFirstClick = true;
         private int closedCells;
-
-        private readonly Dictionary<Settings.Levels, string> highScoresFiles = new Dictionary<Settings.Levels, string>()
-        {
-            {Settings.Levels.Beginner, Resources.highScoresBeginner },
-            {Settings.Levels.Amateur, Resources.highScoresAmateur },
-            {Settings.Levels.Professional, Resources.highScoresProfessional }
-        };
 
         public Presenter(IView view)
         {
