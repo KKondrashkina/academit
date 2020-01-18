@@ -10,6 +10,7 @@ namespace Minesweeper.Logic
     {
         private Minefield minefield;
         private Settings settings;
+        private readonly HighScores highScores;
         private readonly IView view;
         private bool isFirstClick = true;
         private int closedCells;
@@ -19,6 +20,7 @@ namespace Minesweeper.Logic
             this.view = view;
 
             settings = new Settings(Settings.Levels.Beginner);
+            highScores = new HighScores();
 
             minefield = new Minefield(settings);
 
@@ -60,14 +62,20 @@ namespace Minesweeper.Logic
 
             endGame.SetTime(time);
 
-            if (win && settings.Level != Settings.Levels.Special)
-            {
-                WriteToFile(Convert.ToString(time) + "—" + DateTime.Now.ToShortDateString(), $"..\\..\\Resources\\highScores{settings.Level}.txt");
-            }
-
             endGame.SetGameResult(win);
 
             var result = endGame.ShowDialog();
+
+            var lastResult = highScores.GetLastResult(settings.Level);
+
+            if (win && settings.Level != Settings.Levels.Special && (lastResult >= time || lastResult == -1))
+            {
+                var nameForm = new NameForm();
+                var name = nameForm.GetName();
+
+                WriteToFile(Convert.ToString(time) + '—' + DateTime.Now.ToShortDateString() + '—' +
+                            name, $"..\\..\\Resources\\highScores{settings.Level}.txt");
+            }
 
             if (result == DialogResult.Yes)
             {
@@ -77,6 +85,11 @@ namespace Minesweeper.Logic
             {
                 Application.Exit();
             }
+        }
+
+        public List<Score> GetHighScores(Settings.Levels level)
+        {
+            return highScores.CreateNewHighScores($"..\\..\\Resources\\highScores{level}.txt");
         }
 
         public void SetSettings(Settings.Levels level)
@@ -166,7 +179,7 @@ namespace Minesweeper.Logic
                 isFirstClick = false;
             }
 
-            if (minefield.Cells[y, x].IsOpen == false)
+            if (!minefield.Cells[y, x].IsOpen)
             {
                 minefield.Cells[y, x].IsOpen = true;
 

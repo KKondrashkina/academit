@@ -44,9 +44,10 @@
             this.result.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.result.Font = new System.Drawing.Font("Trebuchet MS", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.result.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.result.Location = new System.Drawing.Point(3, 9);
+            this.result.Location = new System.Drawing.Point(3, 10);
+            this.result.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
             this.result.Name = "result";
-            this.result.Size = new System.Drawing.Size(198, 45);
+            this.result.Size = new System.Drawing.Size(198, 37);
             this.result.TabIndex = 2;
             this.result.Text = "You lose!\r\n";
             this.result.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -62,7 +63,7 @@
             this.exit.Location = new System.Drawing.Point(10, 7);
             this.exit.Margin = new System.Windows.Forms.Padding(10, 7, 10, 7);
             this.exit.Name = "exit";
-            this.exit.Size = new System.Drawing.Size(82, 27);
+            this.exit.Size = new System.Drawing.Size(82, 31);
             this.exit.TabIndex = 12;
             this.exit.Text = "Exit";
             this.exit.UseVisualStyleBackColor = false;
@@ -80,10 +81,11 @@
             this.allElements.Location = new System.Drawing.Point(0, 0);
             this.allElements.Name = "allElements";
             this.allElements.RowCount = 3;
-            this.allElements.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 54F));
-            this.allElements.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 51F));
+            this.allElements.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57F));
+            this.allElements.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.allElements.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.allElements.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.allElements.Size = new System.Drawing.Size(204, 146);
+            this.allElements.Size = new System.Drawing.Size(204, 162);
             this.allElements.TabIndex = 13;
             // 
             // buttons
@@ -94,12 +96,12 @@
             this.buttons.Controls.Add(this.exit, 0, 0);
             this.buttons.Controls.Add(this.newGame, 1, 0);
             this.buttons.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttons.Location = new System.Drawing.Point(0, 105);
+            this.buttons.Location = new System.Drawing.Point(0, 117);
             this.buttons.Margin = new System.Windows.Forms.Padding(0);
             this.buttons.Name = "buttons";
             this.buttons.RowCount = 1;
             this.buttons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.buttons.Size = new System.Drawing.Size(204, 41);
+            this.buttons.Size = new System.Drawing.Size(204, 45);
             this.buttons.TabIndex = 13;
             // 
             // newGame
@@ -113,7 +115,7 @@
             this.newGame.Location = new System.Drawing.Point(112, 7);
             this.newGame.Margin = new System.Windows.Forms.Padding(10, 7, 10, 7);
             this.newGame.Name = "newGame";
-            this.newGame.Size = new System.Drawing.Size(82, 27);
+            this.newGame.Size = new System.Drawing.Size(82, 31);
             this.newGame.TabIndex = 13;
             this.newGame.Text = "New Game";
             this.newGame.UseVisualStyleBackColor = false;
@@ -125,10 +127,10 @@
             this.gameTime.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gameTime.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.gameTime.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.gameTime.Location = new System.Drawing.Point(10, 54);
+            this.gameTime.Location = new System.Drawing.Point(10, 57);
             this.gameTime.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.gameTime.Name = "gameTime";
-            this.gameTime.Size = new System.Drawing.Size(184, 51);
+            this.gameTime.Size = new System.Drawing.Size(184, 60);
             this.gameTime.TabIndex = 14;
             // 
             // EndGame
@@ -136,7 +138,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Minesweeper.Properties.Resources.Background;
-            this.ClientSize = new System.Drawing.Size(204, 146);
+            this.ClientSize = new System.Drawing.Size(204, 162);
             this.Controls.Add(this.allElements);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;

@@ -105,13 +105,13 @@ namespace Minesweeper.GUI
 
             if (value < 9)
             {
-                height.Text = @"9";
+                height.Text = "9";
 
                 toolTip1.Show("Высота поля может быть не меньше 9.", height, 10000);
             }
             else if (value > 24)
             {
-                height.Text = @"24";
+                height.Text = "24";
 
                 toolTip1.Show("Высота поля может быть не больше 24.", height, 10000);
             }
@@ -123,13 +123,13 @@ namespace Minesweeper.GUI
 
             if (value < 9)
             {
-                width.Text = @"9";
+                width.Text = "9";
 
                 toolTip1.Show("Ширина поля может быть не меньше 9.", width, 10000);
             }
             else if (value > 30)
             {
-                width.Text = @"30";
+                width.Text = "30";
 
                 toolTip1.Show("Ширина поля может быть не больше 30.", width, 10000);
             }
@@ -142,7 +142,7 @@ namespace Minesweeper.GUI
 
             if (value < 10)
             {
-                mines.Text = @"10";
+                mines.Text = "10";
 
                 toolTip1.Show("Количество мин может быть не меньше 10.", mines, 10000);
             }

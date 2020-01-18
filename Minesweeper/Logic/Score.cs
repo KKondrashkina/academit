@@ -2,16 +2,19 @@
 
 namespace Minesweeper.Logic
 {
-    class Score
+    public class Score
     {
         public int Result { get; }
 
         public DateTime Date { get; }
 
-        public Score(int result, DateTime date)
+        public string Name { get; }
+
+        public Score(int result, DateTime date, string name)
         {
             Result = result;
             Date = date;
+            Name = name;
         }
     }
 }

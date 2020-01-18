@@ -51,7 +51,7 @@ namespace Minesweeper.GUI
         {
             timer.Stop();
 
-            gameTime.Text = @"0";
+            gameTime.Text = "0";
 
             minesCount.Text = Convert.ToString(NotFoundMinesCount);
         }
@@ -224,7 +224,7 @@ namespace Minesweeper.GUI
 
         private void HighScoresMenuItem_Click(object sender, EventArgs e)
         {
-            var highScores = new HighScores();
+            var highScores = new HighScoresForm(presenter);
 
             highScores.ShowDialog();
         }

@@ -19,12 +19,12 @@ namespace Minesweeper.GUI
 
         public void SetGameResult(bool gameResult)
         {
-            result.Text = gameResult ? @"You win!" : @"You lose!";
+            result.Text = gameResult ? "You win!" : "You lose!";
         }
 
         private void EndGame_Load(object sender, EventArgs e)
         {
-            gameTime.Text = $@"Game time: {time} seconds.";
+            gameTime.Text = $"Game time: {time} seconds.";
         }
 
         private void EndGame_FormClosed(object sender, FormClosedEventArgs e)
